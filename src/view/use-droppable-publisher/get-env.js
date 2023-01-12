@@ -1,5 +1,5 @@
 // @flow
-import getClosestScrollable from './get-closest-scrollable';
+import getClosestScrollable from "./get-closest-scrollable";
 
 export type Env = {|
   closestScrollable: ?Element,
@@ -14,7 +14,7 @@ const getIsFixed = (el: ?Element): boolean => {
     return false;
   }
   const style: CSSStyleDeclaration = window.getComputedStyle(el);
-  if (style.position === 'fixed') {
+  if (style.position === "fixed") {
     return true;
   }
   return getIsFixed(el.parentElement);

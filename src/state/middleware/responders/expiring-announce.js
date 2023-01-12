@@ -1,6 +1,6 @@
 // @flow
-import type { Announce } from '../../../types';
-import { warning } from '../../../dev-warning';
+import type { Announce } from "../../../types";
+import { warning } from "../../../dev-warning";
 
 export type ExpiringAnnounce = Announce & {
   wasCalled: () => boolean,
@@ -17,7 +17,7 @@ export default (announce: Announce): ExpiringAnnounce => {
 
   const result = (message: string): void => {
     if (wasCalled) {
-      warning('Announcement already made. Not making a second announcement');
+      warning("Announcement already made. Not making a second announcement");
 
       return;
     }

@@ -1,22 +1,22 @@
 // @flow
-import { useRef } from 'react';
-import { useMemo, useCallback } from 'use-memo-one';
-import { invariant } from '../../../invariant';
+import { useRef } from "react";
+import { useMemo, useCallback } from "use-memo-one";
+import { invariant } from "../../../invariant";
 import type {
   SensorAPI,
   PreDragActions,
   SnapDragActions,
   DraggableId,
-} from '../../../types';
+} from "../../../types";
 import type {
   EventBinding,
   EventOptions,
-} from '../../event-bindings/event-types';
-import * as keyCodes from '../../key-codes';
-import bindEvents from '../../event-bindings/bind-events';
-import preventStandardKeyEvents from './util/prevent-standard-key-events';
-import supportedPageVisibilityEventName from './util/supported-page-visibility-event-name';
-import useLayoutEffect from '../../use-isomorphic-layout-effect';
+} from "../../event-bindings/event-types";
+import * as keyCodes from "../../key-codes";
+import bindEvents from "../../event-bindings/bind-events";
+import preventStandardKeyEvents from "./util/prevent-standard-key-events";
+import supportedPageVisibilityEventName from "./util/supported-page-visibility-event-name";
+import useLayoutEffect from "../../use-isomorphic-layout-effect";
 
 function noop() {}
 
@@ -47,7 +47,7 @@ function getDraggingBindings(
 
   return [
     {
-      eventName: 'keydown',
+      eventName: "keydown",
       fn: (event: KeyboardEvent) => {
         if (event.keyCode === keyCodes.escape) {
           event.preventDefault();
@@ -100,30 +100,30 @@ function getDraggingBindings(
     },
     // any mouse actions kills a drag
     {
-      eventName: 'mousedown',
+      eventName: "mousedown",
       fn: cancel,
     },
     {
-      eventName: 'mouseup',
+      eventName: "mouseup",
       fn: cancel,
     },
     {
-      eventName: 'click',
+      eventName: "click",
       fn: cancel,
     },
     {
-      eventName: 'touchstart',
+      eventName: "touchstart",
       fn: cancel,
     },
     // resizing the browser kills a drag
     {
-      eventName: 'resize',
+      eventName: "resize",
       fn: cancel,
     },
     // kill if the user is using the mouse wheel
     // We are not supporting wheel / trackpad scrolling with keyboard dragging
     {
-      eventName: 'wheel',
+      eventName: "wheel",
       fn: cancel,
       // chrome says it is a violation for this to not be passive
       // it is fine for it to be passive as we just cancel as soon as we get
@@ -143,7 +143,7 @@ export default function useKeyboardSensor(api: SensorAPI) {
 
   const startCaptureBinding: EventBinding = useMemo(
     () => ({
-      eventName: 'keydown',
+      eventName: "keydown",
       fn: function onKeyDown(event: KeyboardEvent) {
         // Event already used
         if (event.defaultPrevented) {
@@ -189,7 +189,7 @@ export default function useKeyboardSensor(api: SensorAPI) {
         function stop() {
           invariant(
             isCapturing,
-            'Cannot stop capturing a keyboard drag when not capturing',
+            "Cannot stop capturing a keyboard drag when not capturing",
           );
           isCapturing = false;
 

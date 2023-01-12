@@ -1,7 +1,7 @@
 // @flow
-import { useEffect } from 'react';
-import { error } from '../dev-warning';
-import useDev from './use-dev';
+import { useEffect } from "react";
+import { error } from "../dev-warning";
+import useDev from "./use-dev";
 
 export default function useDevSetupWarning(fn: () => void, inputs?: mixed[]) {
   useDev(() => {

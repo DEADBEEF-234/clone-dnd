@@ -1,5 +1,5 @@
 // @flow
-import type { BoxModel, Rect, Position } from 'css-box-model';
+import type { BoxModel, Rect, Position } from "css-box-model";
 
 export type Id = string;
 export type DraggableId = Id;
@@ -8,7 +8,7 @@ export type TypeId = Id;
 export type ContextId = Id;
 export type ElementId = Id;
 
-export type DroppableMode = 'standard' | 'virtual';
+export type DroppableMode = "standard" | "virtual";
 export type DroppableDescriptor = {|
   id: DroppableId,
   type: TypeId,
@@ -31,30 +31,30 @@ export type DraggableOptions = {|
   isEnabled: boolean,
 |};
 
-export type Direction = 'horizontal' | 'vertical';
+export type Direction = "horizontal" | "vertical";
 
 export type VerticalAxis = {|
-  direction: 'vertical',
-  line: 'y',
-  start: 'top',
-  end: 'bottom',
-  size: 'height',
-  crossAxisLine: 'x',
-  crossAxisStart: 'left',
-  crossAxisEnd: 'right',
-  crossAxisSize: 'width',
+  direction: "vertical",
+  line: "y",
+  start: "top",
+  end: "bottom",
+  size: "height",
+  crossAxisLine: "x",
+  crossAxisStart: "left",
+  crossAxisEnd: "right",
+  crossAxisSize: "width",
 |};
 
 export type HorizontalAxis = {|
-  direction: 'horizontal',
-  line: 'x',
-  start: 'left',
-  end: 'right',
-  size: 'width',
-  crossAxisLine: 'y',
-  crossAxisStart: 'top',
-  crossAxisEnd: 'bottom',
-  crossAxisSize: 'height',
+  direction: "horizontal",
+  line: "x",
+  start: "left",
+  end: "right",
+  size: "width",
+  crossAxisLine: "y",
+  crossAxisStart: "top",
+  crossAxisEnd: "bottom",
+  crossAxisSize: "height",
 |};
 
 export type Axis = VerticalAxis | HorizontalAxis;
@@ -188,12 +188,12 @@ export type DisplacementGroups = {|
 |};
 
 export type ReorderImpact = {|
-  type: 'REORDER',
+  type: "REORDER",
   destination: DraggableLocation,
 |};
 
 export type CombineImpact = {|
-  type: 'COMBINE',
+  type: "COMBINE",
   combine: Combine,
 |};
 
@@ -231,7 +231,7 @@ export type PagePositions = {|
 // There are two seperate modes that a drag can be in
 // FLUID: everything is done in response to highly granular input (eg mouse)
 // SNAP: items move in response to commands (eg keyboard);
-export type MovementMode = 'FLUID' | 'SNAP';
+export type MovementMode = "FLUID" | "SNAP";
 
 export type DragPositions = {|
   client: ClientPositions,
@@ -266,7 +266,7 @@ export type DragUpdate = {|
   combine: ?Combine,
 |};
 
-export type DropReason = 'DROP' | 'CANCEL';
+export type DropReason = "DROP" | "CANCEL";
 
 // published when a drag finishes
 export type DropResult = {|
@@ -329,13 +329,13 @@ export type CompletedDrag = {|
 |};
 
 export type IdleState = {|
-  phase: 'IDLE',
+  phase: "IDLE",
   completed: ?CompletedDrag,
   shouldFlush: boolean,
 |};
 
 export type DraggingState = {|
-  phase: 'DRAGGING',
+  phase: "DRAGGING",
   isDragging: true,
   critical: Critical,
   movementMode: MovementMode,
@@ -361,7 +361,7 @@ export type DraggingState = {|
 // TODO: rename to BulkCollectingState
 export type CollectingState = {|
   ...DraggingState,
-  phase: 'COLLECTING',
+  phase: "COLLECTING",
 |};
 
 // If a drop action occurs during a bulk collection we need to
@@ -370,14 +370,14 @@ export type CollectingState = {|
 // a drop
 export type DropPendingState = {|
   ...DraggingState,
-  phase: 'DROP_PENDING',
+  phase: "DROP_PENDING",
   isWaiting: boolean,
   reason: DropReason,
 |};
 
 // An optional phase for animating the drop / cancel if it is needed
 export type DropAnimatingState = {|
-  phase: 'DROP_ANIMATING',
+  phase: "DROP_ANIMATING",
   completed: CompletedDrag,
   newHomeClientOffset: Position,
   dropDuration: number,
@@ -396,7 +396,7 @@ export type StateWhenUpdatesAllowed = DraggingState | CollectingState;
 
 export type Announce = (message: string) => void;
 
-export type InOutAnimationMode = 'none' | 'open' | 'close';
+export type InOutAnimationMode = "none" | "open" | "close";
 
 export type ResponderProvided = {|
   announce: Announce,

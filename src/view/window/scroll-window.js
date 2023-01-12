@@ -1,5 +1,5 @@
 // @flow
-import { type Position } from 'css-box-model';
+import { type Position } from "css-box-model";
 
 // Not guarenteed to scroll by the entire amount
 export default (change: Position): void => {

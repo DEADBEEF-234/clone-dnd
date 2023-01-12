@@ -1,5 +1,5 @@
 // @flow
-import { invariant } from '../../../../invariant';
+import { invariant } from "../../../../invariant";
 import type {
   DraggableDimension,
   DroppableDimension,
@@ -7,10 +7,10 @@ import type {
   CombineImpact,
   DraggableLocation,
   DraggableId,
-} from '../../../../types';
-import { tryGetDestination } from '../../../get-impact-location';
-import { findIndex } from '../../../../native-with-fallback';
-import removeDraggableFromList from '../../../remove-draggable-from-list';
+} from "../../../../types";
+import { tryGetDestination } from "../../../get-impact-location";
+import { findIndex } from "../../../../native-with-fallback";
+import removeDraggableFromList from "../../../remove-draggable-from-list";
 
 export type Args = {|
   isMovingForward: boolean,
@@ -39,7 +39,7 @@ export default ({
 
   function getImpact(target: DraggableId) {
     const at: CombineImpact = {
-      type: 'COMBINE',
+      type: "COMBINE",
       combine: {
         draggableId: target,
         droppableId: destination.descriptor.id,
@@ -81,9 +81,9 @@ export default ({
   // need to find the first item before the closest
   const indexOfClosest: number = findIndex(
     withoutDraggable,
-    d => d.descriptor.id === closestId,
+    (d) => d.descriptor.id === closestId,
   );
-  invariant(indexOfClosest !== -1, 'Could not find displaced item in set');
+  invariant(indexOfClosest !== -1, "Could not find displaced item in set");
 
   const proposedIndex: number = indexOfClosest - 1;
 

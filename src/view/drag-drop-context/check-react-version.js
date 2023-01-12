@@ -1,6 +1,6 @@
 // @flow
-import { invariant } from '../../invariant';
-import { warning } from '../../dev-warning';
+import { invariant } from "../../invariant";
+import { warning } from "../../dev-warning";
 
 type Version = {|
   major: number,

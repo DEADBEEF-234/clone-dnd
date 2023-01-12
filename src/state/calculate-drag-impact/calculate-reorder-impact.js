@@ -6,12 +6,12 @@ import type {
   DisplacementGroups,
   Viewport,
   DisplacedBy,
-} from '../../types';
-import removeDraggableFromList from '../remove-draggable-from-list';
-import isHomeOf from '../droppable/is-home-of';
-import { emptyGroups } from '../no-impact';
-import { find } from '../../native-with-fallback';
-import getDisplacementGroups from '../get-displacement-groups';
+} from "../../types";
+import removeDraggableFromList from "../remove-draggable-from-list";
+import isHomeOf from "../droppable/is-home-of";
+import { emptyGroups } from "../no-impact";
+import { find } from "../../native-with-fallback";
+import getDisplacementGroups from "../get-displacement-groups";
 
 type Args = {|
   draggable: DraggableDimension,
@@ -60,7 +60,7 @@ function goAtEnd({
     displaced: emptyGroups,
     displacedBy,
     at: {
-      type: 'REORDER',
+      type: "REORDER",
       destination: {
         droppableId: destination.descriptor.id,
         index: newIndex,
@@ -126,7 +126,7 @@ export default function calculateReorderImpact({
     displaced,
     displacedBy,
     at: {
-      type: 'REORDER',
+      type: "REORDER",
       destination: {
         droppableId: destination.descriptor.id,
         index,

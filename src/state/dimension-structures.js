@@ -1,12 +1,12 @@
 // @flow
-import memoizeOne from 'memoize-one';
-import { values } from '../native-with-fallback';
+import memoizeOne from "memoize-one";
+import { values } from "../native-with-fallback";
 import type {
   DroppableDimension,
   DroppableDimensionMap,
   DraggableDimension,
   DraggableDimensionMap,
-} from '../types';
+} from "../types";
 
 export const toDroppableMap = memoizeOne(
   (droppables: DroppableDimension[]): DroppableDimensionMap =>

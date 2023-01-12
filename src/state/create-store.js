@@ -1,31 +1,31 @@
 // @flow
 /* eslint-disable no-underscore-dangle */
-import { applyMiddleware, createStore, compose } from 'redux';
-import reducer from './reducer';
-import lift from './middleware/lift';
-import style from './middleware/style';
-import drop from './middleware/drop/drop-middleware';
-import scrollListener from './middleware/scroll-listener';
-import responders from './middleware/responders/responders-middleware';
-import dropAnimationFinish from './middleware/drop/drop-animation-finish-middleware';
-import dropAnimationFlushOnScroll from './middleware/drop/drop-animation-flush-on-scroll-middleware';
-import dimensionMarshalStopper from './middleware/dimension-marshal-stopper';
-import focus from './middleware/focus';
-import autoScroll from './middleware/auto-scroll';
-import pendingDrop from './middleware/pending-drop';
-import type { DimensionMarshal } from './dimension-marshal/dimension-marshal-types';
-import type { FocusMarshal } from '../view/use-focus-marshal/focus-marshal-types';
-import type { StyleMarshal } from '../view/use-style-marshal/style-marshal-types';
-import type { AutoScroller } from './auto-scroller/auto-scroller-types';
-import type { Responders, Announce } from '../types';
-import type { Store } from './store-types';
+import { applyMiddleware, createStore, compose } from "redux";
+import reducer from "./reducer";
+import lift from "./middleware/lift";
+import style from "./middleware/style";
+import drop from "./middleware/drop/drop-middleware";
+import scrollListener from "./middleware/scroll-listener";
+import responders from "./middleware/responders/responders-middleware";
+import dropAnimationFinish from "./middleware/drop/drop-animation-finish-middleware";
+import dropAnimationFlushOnScroll from "./middleware/drop/drop-animation-flush-on-scroll-middleware";
+import dimensionMarshalStopper from "./middleware/dimension-marshal-stopper";
+import focus from "./middleware/focus";
+import autoScroll from "./middleware/auto-scroll";
+import pendingDrop from "./middleware/pending-drop";
+import type { DimensionMarshal } from "./dimension-marshal/dimension-marshal-types";
+import type { FocusMarshal } from "../view/use-focus-marshal/focus-marshal-types";
+import type { StyleMarshal } from "../view/use-style-marshal/style-marshal-types";
+import type { AutoScroller } from "./auto-scroller/auto-scroller-types";
+import type { Responders, Announce } from "../types";
+import type { Store } from "./store-types";
 
 // We are checking if window is available before using it.
 // This is needed for universal apps that render the component server side.
 // Details: https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup
 const composeEnhancers =
-  process.env.NODE_ENV !== 'production' &&
-  typeof window !== 'undefined' &&
+  process.env.NODE_ENV !== "production" &&
+  typeof window !== "undefined" &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : compose;

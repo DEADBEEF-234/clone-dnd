@@ -1,13 +1,13 @@
 // @flow
-import { getRect, type Rect, type Spacing, type BoxModel } from 'css-box-model';
+import { getRect, type Rect, type Spacing, type BoxModel } from "css-box-model";
 import type {
   Axis,
   Scrollable,
   DroppableSubject,
   PlaceholderInSubject,
-} from '../../../types';
-import executeClip from './clip';
-import { offsetByPosition } from '../../spacing';
+} from "../../../types";
+import executeClip from "./clip";
+import { offsetByPosition } from "../../spacing";
 
 const scroll = (target: Spacing, frame: ?Scrollable): Spacing => {
   if (!frame) {

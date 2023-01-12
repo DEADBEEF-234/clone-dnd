@@ -1,5 +1,5 @@
 // @flow
-import type { Critical, DraggableLocation, Combine } from '../../../types';
+import type { Critical, DraggableLocation, Combine } from "../../../types";
 
 export const areLocationsEqual = (
   first: ?DraggableLocation,

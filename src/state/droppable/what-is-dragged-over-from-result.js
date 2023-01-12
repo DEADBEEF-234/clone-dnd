@@ -1,5 +1,5 @@
 // @flow
-import type { DroppableId, DropResult } from '../../types';
+import type { DroppableId, DropResult } from "../../types";
 
 export default (result: DropResult): ?DroppableId => {
   const { combine, destination } = result;

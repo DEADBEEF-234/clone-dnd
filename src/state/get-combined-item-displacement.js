@@ -1,13 +1,13 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   DisplacementGroups,
   LiftEffect,
   DraggableId,
   DisplacedBy,
-} from '../types';
-import { origin, negate } from './position';
-import didStartAfterCritical from './did-start-after-critical';
+} from "../types";
+import { origin, negate } from "./position";
+import didStartAfterCritical from "./did-start-after-critical";
 
 type Args = {|
   displaced: DisplacementGroups,

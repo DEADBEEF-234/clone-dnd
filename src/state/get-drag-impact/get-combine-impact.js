@@ -1,5 +1,5 @@
 // @flow
-import type { Rect } from 'css-box-model';
+import type { Rect } from "css-box-model";
 import type {
   DraggableId,
   Axis,
@@ -8,12 +8,12 @@ import type {
   DragImpact,
   LiftEffect,
   DisplacedBy,
-} from '../../types';
-import { find } from '../../native-with-fallback';
-import getDidStartAfterCritical from '../did-start-after-critical';
-import getDisplacedBy from '../get-displaced-by';
-import getIsDisplaced from '../get-is-displaced';
-import removeDraggableFromList from '../remove-draggable-from-list';
+} from "../../types";
+import { find } from "../../native-with-fallback";
+import getDidStartAfterCritical from "../did-start-after-critical";
+import getDisplacedBy from "../get-displaced-by";
+import getIsDisplaced from "../get-is-displaced";
+import removeDraggableFromList from "../remove-draggable-from-list";
 
 type Args = {|
   draggable: DraggableDimension,
@@ -119,7 +119,7 @@ export default ({
     displacedBy,
     displaced: previousImpact.displaced,
     at: {
-      type: 'COMBINE',
+      type: "COMBINE",
       combine: {
         draggableId: combineWith.descriptor.id,
         droppableId: destination.descriptor.id,

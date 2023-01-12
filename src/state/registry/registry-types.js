@@ -1,5 +1,5 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   Id,
   DraggableId,
@@ -11,7 +11,7 @@ import type {
   DroppableDescriptor,
   DroppableDimension,
   TypeId,
-} from '../../types';
+} from "../../types";
 
 export type GetDraggableDimensionFn = (
   windowScroll: Position,
@@ -79,11 +79,11 @@ export type DroppableAPI = {|
 
 export type RegistryEvent =
   | {|
-      type: 'ADDITION',
+      type: "ADDITION",
       value: DraggableEntry,
     |}
   | {|
-      type: 'REMOVAL',
+      type: "REMOVAL",
       value: DraggableEntry,
     |};
 

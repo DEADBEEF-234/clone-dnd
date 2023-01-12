@@ -1,15 +1,15 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { invariant } from '../../invariant';
+import { type Position } from "css-box-model";
+import { invariant } from "../../invariant";
 import type {
   DimensionMarshal,
   Callbacks,
   StartPublishingResult,
-} from './dimension-marshal-types';
+} from "./dimension-marshal-types";
 import createPublisher, {
   type WhileDraggingPublisher,
-} from './while-dragging-publisher';
-import getInitialPublish from './get-initial-publish';
+} from "./while-dragging-publisher";
+import getInitialPublish from "./get-initial-publish";
 import type {
   Registry,
   DroppableEntry,
@@ -17,15 +17,15 @@ import type {
   Subscriber,
   Unsubscribe,
   RegistryEvent,
-} from '../registry/registry-types';
+} from "../registry/registry-types";
 import type {
   DroppableId,
   DroppableDescriptor,
   LiftRequest,
   Critical,
   DraggableDescriptor,
-} from '../../types';
-import { warning } from '../../dev-warning';
+} from "../../types";
+import { warning } from "../../dev-warning";
 
 type Collection = {|
   critical: Critical,
@@ -50,7 +50,7 @@ function shouldPublishUpdate(
     entry.descriptor.droppableId,
   );
 
-  if (home.descriptor.mode !== 'virtual') {
+  if (home.descriptor.mode !== "virtual") {
     warning(`
       You are attempting to add or remove a Draggable [id: ${entry.descriptor.id}]
       while a drag is occurring. This is only supported for virtual lists.
@@ -153,18 +153,18 @@ export default (registry: Registry, callbacks: Callbacks) => {
   const subscriber: Subscriber = (event: RegistryEvent) => {
     invariant(
       collection,
-      'Should only be subscribed when a collection is occurring',
+      "Should only be subscribed when a collection is occurring",
     );
     // The dragging item can be add and removed when using a clone
     // We do not publish updates for the critical item
     const dragging: DraggableDescriptor = collection.critical.draggable;
 
-    if (event.type === 'ADDITION') {
+    if (event.type === "ADDITION") {
       if (shouldPublishUpdate(registry, dragging, event.value)) {
         publisher.add(event.value);
       }
     }
-    if (event.type === 'REMOVAL') {
+    if (event.type === "REMOVAL") {
       if (shouldPublishUpdate(registry, dragging, event.value)) {
         publisher.remove(event.value);
       }
@@ -174,7 +174,7 @@ export default (registry: Registry, callbacks: Callbacks) => {
   const startPublishing = (request: LiftRequest): StartPublishingResult => {
     invariant(
       !collection,
-      'Cannot start capturing critical dimensions as there is already a collection',
+      "Cannot start capturing critical dimensions as there is already a collection",
     );
     const entry: DraggableEntry = registry.draggable.getById(
       request.draggableId,

@@ -1,9 +1,9 @@
 // @flow
-import type { DraggableId, ContextId } from '../../types';
-import * as attributes from '../data-attributes';
-import { find, toArray } from '../../native-with-fallback';
-import { warning } from '../../dev-warning';
-import isHtmlElement from '../is-type-of-element/is-html-element';
+import type { DraggableId, ContextId } from "../../types";
+import * as attributes from "../data-attributes";
+import { find, toArray } from "../../native-with-fallback";
+import { warning } from "../../dev-warning";
+import isHtmlElement from "../is-type-of-element/is-html-element";
 
 export default function findDraggable(
   contextId: ContextId,
@@ -22,7 +22,7 @@ export default function findDraggable(
   }
 
   if (!isHtmlElement(draggable)) {
-    warning('Draggable element is not a HTMLElement');
+    warning("Draggable element is not a HTMLElement");
     return null;
   }
 

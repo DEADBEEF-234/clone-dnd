@@ -1,31 +1,31 @@
 // @flow
-import ReactDOM from 'react-dom';
-import { useMemo, useCallback } from 'use-memo-one';
-import React, { useRef, useContext, type Node } from 'react';
-import { invariant } from '../../invariant';
-import type { DraggableId } from '../../types';
-import type { Props, Provided } from './droppable-types';
-import useDroppablePublisher from '../use-droppable-publisher';
-import Placeholder from '../placeholder';
-import AppContext, { type AppContextValue } from '../context/app-context';
+import ReactDOM from "react-dom";
+import { useMemo, useCallback } from "use-memo-one";
+import React, { useRef, useContext, type Node } from "react";
+import { invariant } from "../../invariant";
+import type { DraggableId } from "../../types";
+import type { Props, Provided } from "./droppable-types";
+import useDroppablePublisher from "../use-droppable-publisher";
+import Placeholder from "../placeholder";
+import AppContext, { type AppContextValue } from "../context/app-context";
 import DroppableContext, {
   type DroppableContextValue,
-} from '../context/droppable-context';
+} from "../context/droppable-context";
 // import useAnimateInOut from '../use-animate-in-out/use-animate-in-out';
-import getMaxWindowScroll from '../window/get-max-window-scroll';
-import useValidation from './use-validation';
+import getMaxWindowScroll from "../window/get-max-window-scroll";
+import useValidation from "./use-validation";
 import type {
   StateSnapshot as DraggableStateSnapshot,
   Provided as DraggableProvided,
-} from '../draggable/draggable-types';
+} from "../draggable/draggable-types";
 import AnimateInOut, {
   type AnimateProvided,
-} from '../animate-in-out/animate-in-out';
-import { PrivateDraggable } from '../draggable/draggable-api';
+} from "../animate-in-out/animate-in-out";
+import { PrivateDraggable } from "../draggable/draggable-api";
 
 export default function Droppable(props: Props) {
   const appContext: ?AppContextValue = useContext<?AppContextValue>(AppContext);
-  invariant(appContext, 'Could not find app context');
+  invariant(appContext, "Could not find app context");
   const { contextId, isMovementAllowed } = appContext;
   const droppableRef = useRef<?HTMLElement>(null);
   const placeholderRef = useRef<?HTMLElement>(null);
@@ -112,8 +112,8 @@ export default function Droppable(props: Props) {
       innerRef: setDroppableRef,
       placeholder,
       droppableProps: {
-        'data-rbd-droppable-id': droppableId,
-        'data-rbd-droppable-context-id': contextId,
+        "data-rbd-droppable-id": droppableId,
+        "data-rbd-droppable-context-id": contextId,
       },
     }),
     [contextId, droppableId, placeholder, setDroppableRef],

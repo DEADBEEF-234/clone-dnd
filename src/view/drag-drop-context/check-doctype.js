@@ -1,5 +1,5 @@
 // @flow
-import { warning } from '../../dev-warning';
+import { warning } from "../../dev-warning";
 
 const suffix: string = `
   We expect a html5 doctype: <!doctype html>
@@ -20,7 +20,7 @@ export default (doc: Document) => {
     return;
   }
 
-  if (doctype.name.toLowerCase() !== 'html') {
+  if (doctype.name.toLowerCase() !== "html") {
     warning(`
       Unexpected <!doctype> found: (${doctype.name})
 
@@ -28,7 +28,7 @@ export default (doc: Document) => {
     `);
   }
 
-  if (doctype.publicId !== '') {
+  if (doctype.publicId !== "") {
     warning(`
       Unexpected <!doctype> publicId found: (${doctype.publicId})
       A html5 doctype does not have a publicId

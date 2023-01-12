@@ -1,18 +1,18 @@
 // @flow
-import { type Position } from 'css-box-model';
+import { type Position } from "css-box-model";
 import type {
   Viewport,
   DraggableDimension,
   DroppableDimension,
   LiftEffect,
-} from '../../../types';
-import { distance } from '../../position';
-import { isTotallyVisible } from '../../visibility/is-visible';
-import withDroppableDisplacement from '../../with-scroll-change/with-droppable-displacement';
+} from "../../../types";
+import { distance } from "../../position";
+import { isTotallyVisible } from "../../visibility/is-visible";
+import withDroppableDisplacement from "../../with-scroll-change/with-droppable-displacement";
 import {
   getCurrentPageBorderBox,
   getCurrentPageBorderBoxCenter,
-} from './without-starting-displacement';
+} from "./without-starting-displacement";
 
 type Args = {|
   pageBorderBoxCenter: Position,

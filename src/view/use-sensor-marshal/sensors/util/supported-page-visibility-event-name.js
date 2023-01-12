@@ -1,11 +1,11 @@
 // @flow
-import { find } from '../../../../native-with-fallback';
+import { find } from "../../../../native-with-fallback";
 
 const supportedEventName: string = ((): string => {
-  const base: string = 'visibilitychange';
+  const base: string = "visibilitychange";
 
   // Server side rendering
-  if (typeof document === 'undefined') {
+  if (typeof document === "undefined") {
     return base;
   }
 

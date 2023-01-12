@@ -1,13 +1,13 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { invariant } from '../../invariant';
+import { type Position } from "css-box-model";
+import { invariant } from "../../invariant";
 import type {
   DroppableDimension,
   Scrollable,
   DroppableSubject,
-} from '../../types';
-import { negate, subtract } from '../position';
-import getSubject from './util/get-subject';
+} from "../../types";
+import { negate, subtract } from "../position";
+import getSubject from "./util/get-subject";
 
 export default (
   droppable: DroppableDimension,

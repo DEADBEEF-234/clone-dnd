@@ -1,6 +1,6 @@
 // @flow
-import type { DimensionMap, DroppableDimension } from '../types';
-import patchDroppableMap from './patch-droppable-map';
+import type { DimensionMap, DroppableDimension } from "../types";
+import patchDroppableMap from "./patch-droppable-map";
 
 export default (
   dimensions: DimensionMap,

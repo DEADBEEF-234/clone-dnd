@@ -1,2 +1,2 @@
 // @flow
-export { default } from './use-hidden-element';
+export { default } from "./use-hidden-element";

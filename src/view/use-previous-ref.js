@@ -1,5 +1,5 @@
 // @flow
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from "react";
 
 export default function usePrevious<T>(current: T): {| current: T |} {
   const ref = useRef<T>(current);

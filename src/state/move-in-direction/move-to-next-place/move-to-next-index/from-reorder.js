@@ -1,5 +1,5 @@
 // @flow
-import type { DraggableDimension, DraggableLocation } from '../../../../types';
+import type { DraggableDimension, DraggableLocation } from "../../../../types";
 
 type Args = {|
   isMovingForward: boolean,

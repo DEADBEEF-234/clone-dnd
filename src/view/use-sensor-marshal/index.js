@@ -1,2 +1,2 @@
 // @flow
-export { default } from './use-sensor-marshal';
+export { default } from "./use-sensor-marshal";

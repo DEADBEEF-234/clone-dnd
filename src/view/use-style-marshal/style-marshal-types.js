@@ -1,5 +1,5 @@
 // @flow
-import type { DropReason } from '../../types';
+import type { DropReason } from "../../types";
 
 export type StyleMarshal = {|
   dragging: () => void,

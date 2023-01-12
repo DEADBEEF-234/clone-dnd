@@ -1,5 +1,5 @@
 // @flow
-import getWindowFromEl from '../window/get-window-from-el';
+import getWindowFromEl from "../window/get-window-from-el";
 
 export default function isSvgElement(el: Object): boolean %checks {
   // Some environments do not support SVGElement

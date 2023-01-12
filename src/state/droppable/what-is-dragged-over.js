@@ -1,5 +1,5 @@
 // @flow
-import type { ImpactLocation, DroppableId, DragImpact } from '../../types';
+import type { ImpactLocation, DroppableId, DragImpact } from "../../types";
 
 export default (impact: DragImpact): ?DroppableId => {
   const at: ?ImpactLocation = impact.at;
@@ -8,7 +8,7 @@ export default (impact: DragImpact): ?DroppableId => {
     return null;
   }
 
-  if (at.type === 'REORDER') {
+  if (at.type === "REORDER") {
     return at.destination.droppableId;
   }
 

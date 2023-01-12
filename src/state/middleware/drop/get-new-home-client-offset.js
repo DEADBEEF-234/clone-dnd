@@ -1,5 +1,5 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   DroppableDimension,
   Viewport,
@@ -8,10 +8,10 @@ import type {
   DraggableDimension,
   DroppableId,
   LiftEffect,
-} from '../../../types';
-import whatIsDraggedOver from '../../droppable/what-is-dragged-over';
-import { subtract } from '../../position';
-import getClientBorderBoxCenter from '../../get-center-from-impact/get-client-border-box-center';
+} from "../../../types";
+import whatIsDraggedOver from "../../droppable/what-is-dragged-over";
+import { subtract } from "../../position";
+import getClientBorderBoxCenter from "../../get-center-from-impact/get-client-border-box-center";
 
 type Args = {|
   impact: DragImpact,

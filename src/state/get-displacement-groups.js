@@ -1,5 +1,5 @@
 // @flow
-import { type Rect, type Spacing, expand, getRect } from 'css-box-model';
+import { type Rect, type Spacing, expand, getRect } from "css-box-model";
 import type {
   DraggableId,
   Displacement,
@@ -7,8 +7,8 @@ import type {
   DroppableDimension,
   DisplacementGroups,
   DisplacedBy,
-} from '../types';
-import { isPartiallyVisible } from './visibility/is-visible';
+} from "../types";
+import { isPartiallyVisible } from "./visibility/is-visible";
 
 type Args = {|
   afterDragging: DraggableDimension[],
@@ -25,7 +25,7 @@ const getShouldAnimate = (
   forceShouldAnimate: ?boolean,
 ) => {
   // Use a forced value if provided
-  if (typeof forceShouldAnimate === 'boolean') {
+  if (typeof forceShouldAnimate === "boolean") {
     return forceShouldAnimate;
   }
 

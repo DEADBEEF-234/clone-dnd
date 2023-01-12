@@ -1,8 +1,8 @@
 // @flow
-import type { Position, Rect } from 'css-box-model';
-import type { Scrollable, DroppableDimension } from '../../../types';
-import getScroll from './get-scroll';
-import { canScrollDroppable } from '../can-scroll';
+import type { Position, Rect } from "css-box-model";
+import type { Scrollable, DroppableDimension } from "../../../types";
+import getScroll from "./get-scroll";
+import { canScrollDroppable } from "../can-scroll";
 
 type Args = {|
   droppable: DroppableDimension,

@@ -1,21 +1,21 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { invariant } from '../../invariant';
-import { add, subtract } from '../position';
+import { type Position } from "css-box-model";
+import { invariant } from "../../invariant";
+import { add, subtract } from "../position";
 import {
   canScrollWindow,
   canScrollDroppable,
   getWindowOverlap,
   getDroppableOverlap,
-} from './can-scroll';
-import whatIsDraggedOver from '../droppable/what-is-dragged-over';
-import { type MoveArgs } from '../action-creators';
+} from "./can-scroll";
+import whatIsDraggedOver from "../droppable/what-is-dragged-over";
+import { type MoveArgs } from "../action-creators";
 import type {
   DroppableDimension,
   Viewport,
   DraggingState,
   DroppableId,
-} from '../../types';
+} from "../../types";
 
 type Args = {|
   scrollDroppable: (id: DroppableId, change: Position) => void,
@@ -102,7 +102,7 @@ export default ({
     const destination: ?DroppableId = whatIsDraggedOver(state.impact);
     invariant(
       destination,
-      'Cannot perform a jump scroll when there is no destination',
+      "Cannot perform a jump scroll when there is no destination",
     );
 
     // 1. We scroll the droppable first if we can to avoid the draggable

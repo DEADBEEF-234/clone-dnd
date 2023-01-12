@@ -1,16 +1,16 @@
 // @flow
-import { type Position, type Rect } from 'css-box-model';
+import { type Position, type Rect } from "css-box-model";
 import type {
   DroppableDimension,
   DroppableDimensionMap,
   DroppableId,
   DraggableDimension,
   Axis,
-} from '../types';
-import { toDroppableList } from './dimension-structures';
-import isPositionInFrame from './visibility/is-position-in-frame';
-import { distance, patch } from './position';
-import isWithin from './is-within';
+} from "../types";
+import { toDroppableList } from "./dimension-structures";
+import isPositionInFrame from "./visibility/is-position-in-frame";
+import { distance, patch } from "./position";
+import isWithin from "./is-within";
 
 // https://stackoverflow.com/questions/306316/determine-if-two-rectangles-overlap-each-other
 // https://silentmatt.com/rectangle-intersection/

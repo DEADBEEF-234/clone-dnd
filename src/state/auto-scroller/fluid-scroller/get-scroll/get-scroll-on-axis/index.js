@@ -1,10 +1,10 @@
 // @flow
-import type { Rect, Spacing } from 'css-box-model';
+import type { Rect, Spacing } from "css-box-model";
 import getDistanceThresholds, {
   type DistanceThresholds,
-} from './get-distance-thresholds';
-import type { Axis } from '../../../../../types';
-import getValue from './get-value';
+} from "./get-distance-thresholds";
+import type { Axis } from "../../../../../types";
+import getValue from "./get-value";
 
 type GetOnAxisArgs = {|
   container: Rect,

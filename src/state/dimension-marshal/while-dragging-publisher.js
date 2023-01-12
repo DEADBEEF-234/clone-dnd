@@ -1,5 +1,5 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   DraggableId,
   DroppableId,
@@ -9,15 +9,15 @@ import type {
   DroppablePublish,
   DroppableIdMap,
   DraggableIdMap,
-} from '../../types';
+} from "../../types";
 import type {
   DroppableEntry,
   Registry,
   DraggableEntry,
   DraggableEntryMap,
-} from '../registry/registry-types';
-import * as timings from '../../debug/timings';
-import { origin } from '../position';
+} from "../registry/registry-types";
+import * as timings from "../../debug/timings";
+import { origin } from "../position";
 
 export type WhileDraggingPublisher = {|
   add: (entry: DraggableEntry) => void,
@@ -47,7 +47,7 @@ const clean = (): Staging => ({
   modified: {},
 });
 
-const timingKey: string = 'Publish collection from DOM';
+const timingKey: string = "Publish collection from DOM";
 
 export default function createPublisher({
   registry,

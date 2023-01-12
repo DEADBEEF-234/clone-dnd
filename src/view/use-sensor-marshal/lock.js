@@ -1,5 +1,5 @@
 // @flow
-import { invariant } from '../../invariant';
+import { invariant } from "../../invariant";
 
 export type Lock = {|
   abandon: () => void,
@@ -25,7 +25,7 @@ export default function create(): LockAPI {
   }
 
   function claim(abandon: () => void): Lock {
-    invariant(!lock, 'Cannot claim lock as it is already claimed');
+    invariant(!lock, "Cannot claim lock as it is already claimed");
     const newLock: Lock = { abandon };
     // update singleton
     lock = newLock;
@@ -33,7 +33,7 @@ export default function create(): LockAPI {
     return newLock;
   }
   function release() {
-    invariant(lock, 'Cannot release lock when there is no lock');
+    invariant(lock, "Cannot release lock when there is no lock");
     lock = null;
   }
 

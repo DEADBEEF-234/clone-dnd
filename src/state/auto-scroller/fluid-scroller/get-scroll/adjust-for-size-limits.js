@@ -1,5 +1,5 @@
 // @flow
-import type { Rect, Position } from 'css-box-model';
+import type { Rect, Position } from "css-box-model";
 
 type Args = {|
   container: Rect,

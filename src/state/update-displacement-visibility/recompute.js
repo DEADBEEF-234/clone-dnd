@@ -7,8 +7,8 @@ import type {
   Viewport,
   DraggableId,
   DisplacementGroups,
-} from '../../types';
-import getDisplacementGroups from '../get-displacement-groups';
+} from "../../types";
+import getDisplacementGroups from "../get-displacement-groups";
 
 type RecomputeArgs = {|
   impact: DragImpact,

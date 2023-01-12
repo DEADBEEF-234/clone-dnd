@@ -1,7 +1,7 @@
 // @flow
-import type { ContextId } from '../../types';
-import { transitions } from '../../animation';
-import * as attributes from '../data-attributes';
+import type { ContextId } from "../../types";
+import { transitions } from "../../animation";
+import * as attributes from "../data-attributes";
 
 export type Styles = {|
   always: string,
@@ -30,14 +30,14 @@ const getStyles = (rules: Rule[], property: string): string =>
     .map((rule: Rule): string => {
       const value: ?string = rule.styles[property];
       if (!value) {
-        return '';
+        return "";
       }
 
       return `${rule.selector} { ${value} }`;
     })
-    .join(' ');
+    .join(" ");
 
-const noPointerEvents: string = 'pointer-events: none;';
+const noPointerEvents: string = "pointer-events: none;";
 
 export default (contextId: ContextId): Styles => {
   const getSelector = makeGetSelector(contextId);
@@ -144,7 +144,7 @@ export default (contextId: ContextId): Styles => {
   // we do not want the browser to have behaviors we do not expect
 
   const body: Rule = {
-    selector: 'body',
+    selector: "body",
     styles: {
       dragging: `
         cursor: grabbing;
@@ -161,10 +161,10 @@ export default (contextId: ContextId): Styles => {
   const rules: Rule[] = [draggable, dragHandle, droppable, body];
 
   return {
-    always: getStyles(rules, 'always'),
-    resting: getStyles(rules, 'resting'),
-    dragging: getStyles(rules, 'dragging'),
-    dropAnimating: getStyles(rules, 'dropAnimating'),
-    userCancel: getStyles(rules, 'userCancel'),
+    always: getStyles(rules, "always"),
+    resting: getStyles(rules, "resting"),
+    dragging: getStyles(rules, "dragging"),
+    dropAnimating: getStyles(rules, "dropAnimating"),
+    userCancel: getStyles(rules, "userCancel"),
   };
 };

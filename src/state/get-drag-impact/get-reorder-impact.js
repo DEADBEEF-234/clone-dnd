@@ -1,5 +1,5 @@
 // @flow
-import { type Rect } from 'css-box-model';
+import { type Rect } from "css-box-model";
 import type {
   DraggableId,
   DraggableDimension,
@@ -10,14 +10,14 @@ import type {
   Viewport,
   DisplacedBy,
   LiftEffect,
-} from '../../types';
-import getDisplacedBy from '../get-displaced-by';
-import removeDraggableFromList from '../remove-draggable-from-list';
-import isHomeOf from '../droppable/is-home-of';
-import { find } from '../../native-with-fallback';
-import getDidStartAfterCritical from '../did-start-after-critical';
-import calculateReorderImpact from '../calculate-drag-impact/calculate-reorder-impact';
-import getIsDisplaced from '../get-is-displaced';
+} from "../../types";
+import getDisplacedBy from "../get-displaced-by";
+import removeDraggableFromList from "../remove-draggable-from-list";
+import isHomeOf from "../droppable/is-home-of";
+import { find } from "../../native-with-fallback";
+import getDidStartAfterCritical from "../did-start-after-critical";
+import calculateReorderImpact from "../calculate-drag-impact/calculate-reorder-impact";
+import getIsDisplaced from "../get-is-displaced";
 
 type Args = {|
   pageBorderBoxWithDroppableScroll: Rect,

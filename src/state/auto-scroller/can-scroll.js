@@ -1,7 +1,7 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { add, apply, isEqual, origin } from '../position';
-import type { DroppableDimension, Viewport, Scrollable } from '../../types';
+import { type Position } from "css-box-model";
+import { add, apply, isEqual, origin } from "../position";
+import type { DroppableDimension, Viewport, Scrollable } from "../../types";
 
 type CanPartiallyScrollArgs = {|
   max: Position,

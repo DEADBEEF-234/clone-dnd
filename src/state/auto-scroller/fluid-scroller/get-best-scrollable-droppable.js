@@ -1,15 +1,15 @@
 // @flow
-import memoizeOne from 'memoize-one';
-import { type Position } from 'css-box-model';
+import memoizeOne from "memoize-one";
+import { type Position } from "css-box-model";
 import type {
   DroppableDimension,
   DroppableDimensionMap,
   DroppableId,
-} from '../../../types';
-import { invariant } from '../../../invariant';
-import isPositionInFrame from '../../visibility/is-position-in-frame';
-import { toDroppableList } from '../../dimension-structures';
-import { find } from '../../../native-with-fallback';
+} from "../../../types";
+import { invariant } from "../../../invariant";
+import isPositionInFrame from "../../visibility/is-position-in-frame";
+import { toDroppableList } from "../../dimension-structures";
+import { find } from "../../../native-with-fallback";
 
 const getScrollableDroppables = memoizeOne(
   (droppables: DroppableDimensionMap): DroppableDimension[] =>
@@ -37,7 +37,7 @@ const getScrollableDroppableOver = (
   const maybe: ?DroppableDimension = find(
     getScrollableDroppables(droppables),
     (droppable: DroppableDimension): boolean => {
-      invariant(droppable.frame, 'Invalid result');
+      invariant(droppable.frame, "Invalid result");
       return isPositionInFrame(droppable.frame.pageMarginBox)(target);
     },
   );

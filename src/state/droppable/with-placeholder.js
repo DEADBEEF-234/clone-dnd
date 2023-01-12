@@ -1,6 +1,6 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { invariant } from '../../invariant';
+import { type Position } from "css-box-model";
+import { invariant } from "../../invariant";
 import type {
   Axis,
   DroppableDimension,
@@ -9,12 +9,12 @@ import type {
   Scrollable,
   DroppableSubject,
   PlaceholderInSubject,
-} from '../../types';
-import getDraggablesInsideDroppable from '../get-draggables-inside-droppable';
-import { add, patch } from '../position';
-import getSubject from './util/get-subject';
-import isHomeOf from './is-home-of';
-import getDisplacedBy from '../get-displaced-by';
+} from "../../types";
+import getDraggablesInsideDroppable from "../get-draggables-inside-droppable";
+import { add, patch } from "../position";
+import getSubject from "./util/get-subject";
+import isHomeOf from "./is-home-of";
+import getDisplacedBy from "../get-displaced-by";
 
 const getRequiredGrowthForPlaceholder = (
   droppable: DroppableDimension,
@@ -25,7 +25,7 @@ const getRequiredGrowthForPlaceholder = (
 
   // A virtual list will most likely not contain all of the Draggables
   // so counting them does not help.
-  if (droppable.descriptor.mode === 'virtual') {
+  if (droppable.descriptor.mode === "virtual") {
     return patch(axis.line, placeholderSize[axis.line]);
   }
 
@@ -69,12 +69,12 @@ export const addPlaceholder = (
 
   invariant(
     !isHomeOf(draggable, droppable),
-    'Should not add placeholder space to home list',
+    "Should not add placeholder space to home list",
   );
 
   invariant(
     !droppable.subject.withPlaceholder,
-    'Cannot add placeholder size to a subject when it already has one',
+    "Cannot add placeholder size to a subject when it already has one",
   );
 
   const placeholderSize: Position = getDisplacedBy(
@@ -132,7 +132,7 @@ export const removePlaceholder = (
   const added: ?PlaceholderInSubject = droppable.subject.withPlaceholder;
   invariant(
     added,
-    'Cannot remove placeholder form subject when there was none',
+    "Cannot remove placeholder form subject when there was none",
   );
 
   const frame: ?Scrollable = droppable.frame;
@@ -154,7 +154,7 @@ export const removePlaceholder = (
   const oldMaxScroll: ?Position = added.oldFrameMaxScroll;
   invariant(
     oldMaxScroll,
-    'Expected droppable with frame to have old max frame scroll when removing placeholder',
+    "Expected droppable with frame to have old max frame scroll when removing placeholder",
   );
 
   const newFrame: Scrollable = withMaxScroll(frame, oldMaxScroll);

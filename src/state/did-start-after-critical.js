@@ -1,5 +1,5 @@
 // @flow
-import type { DraggableId, LiftEffect } from '../types';
+import type { DraggableId, LiftEffect } from "../types";
 
 export default function didStartAfterCritical(
   draggableId: DraggableId,

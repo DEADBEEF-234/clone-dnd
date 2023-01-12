@@ -1,5 +1,5 @@
 // @flow
-import { offset, type Position, type BoxModel } from 'css-box-model';
+import { offset, type Position, type BoxModel } from "css-box-model";
 import type {
   Axis,
   DragImpact,
@@ -8,11 +8,11 @@ import type {
   DraggableDimensionMap,
   DroppableDimension,
   LiftEffect,
-} from '../../../types';
-import { goBefore, goAfter, goIntoStart } from '../move-relative-to';
-import getDraggablesInsideDroppable from '../../get-draggables-inside-droppable';
-import { negate } from '../../position';
-import didStartAfterCritical from '../../did-start-after-critical';
+} from "../../../types";
+import { goBefore, goAfter, goIntoStart } from "../move-relative-to";
+import getDraggablesInsideDroppable from "../../get-draggables-inside-droppable";
+import { negate } from "../../position";
+import didStartAfterCritical from "../../did-start-after-critical";
 
 type NewHomeArgs = {|
   impact: DragImpact,

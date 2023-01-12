@@ -1,5 +1,5 @@
 // @flow
-import isHtmlElement from '../is-type-of-element/is-html-element';
+import isHtmlElement from "../is-type-of-element/is-html-element";
 
 export type TagNameMap = {
   [tagName: string]: true,
@@ -38,8 +38,8 @@ function isAnInteractiveElement(parent: Element, current: ?Element) {
   // contenteditable="true" or contenteditable="" are valid ways
   // of creating a contenteditable container
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable
-  const attribute: ?string = current.getAttribute('contenteditable');
-  if (attribute === 'true' || attribute === '') {
+  const attribute: ?string = current.getAttribute("contenteditable");
+  if (attribute === "true" || attribute === "") {
     return true;
   }
 

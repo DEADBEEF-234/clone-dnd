@@ -1,10 +1,10 @@
 // @flow
-import { useRef, useEffect } from 'react';
-import { useMemo, useCallback } from 'use-memo-one';
-import type { Announce, ContextId } from '../../types';
-import { warning } from '../../dev-warning';
-import getBodyElement from '../get-body-element';
-import visuallyHidden from '../visually-hidden-style';
+import { useRef, useEffect } from "react";
+import { useMemo, useCallback } from "use-memo-one";
+import type { Announce, ContextId } from "../../types";
+import { warning } from "../../dev-warning";
+import getBodyElement from "../get-body-element";
+import visuallyHidden from "../visually-hidden-style";
 
 export const getId = (contextId: ContextId): string =>
   `rbd-announcement-${contextId}`;
@@ -15,7 +15,7 @@ export default function useAnnouncer(contextId: ContextId): Announce {
 
   useEffect(
     function setup() {
-      const el: HTMLElement = document.createElement('div');
+      const el: HTMLElement = document.createElement("div");
       // storing reference for usage in announce
       ref.current = el;
 
@@ -25,10 +25,10 @@ export default function useAnnouncer(contextId: ContextId): Announce {
       // Aria live region
 
       // will force itself to be read
-      el.setAttribute('aria-live', 'assertive');
-      el.setAttribute('role', 'log');
+      el.setAttribute("aria-live", "assertive");
+      el.setAttribute("role", "log");
       // must read the whole thing every time
-      el.setAttribute('aria-atomic', 'true');
+      el.setAttribute("aria-atomic", "true");
 
       // hide the element visually
       Object.assign(el.style, visuallyHidden);

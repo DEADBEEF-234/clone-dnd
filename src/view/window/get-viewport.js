@@ -1,10 +1,10 @@
 // @flow
-import { getRect, type Rect, type Position } from 'css-box-model';
-import type { Viewport } from '../../types';
-import { origin } from '../../state/position';
-import getWindowScroll from './get-window-scroll';
-import getMaxWindowScroll from './get-max-window-scroll';
-import getDocumentElement from '../get-document-element';
+import { getRect, type Rect, type Position } from "css-box-model";
+import type { Viewport } from "../../types";
+import { origin } from "../../state/position";
+import getWindowScroll from "./get-window-scroll";
+import getMaxWindowScroll from "./get-max-window-scroll";
+import getDocumentElement from "../get-document-element";
 
 export default (): Viewport => {
   const scroll: Position = getWindowScroll();

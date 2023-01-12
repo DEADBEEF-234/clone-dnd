@@ -1,29 +1,29 @@
 // @flow
-import React, { useState, useRef, useEffect, type Node } from 'react';
-import { useCallback } from 'use-memo-one';
-import type { Spacing } from 'css-box-model';
+import React, { useState, useRef, useEffect, type Node } from "react";
+import { useCallback } from "use-memo-one";
+import type { Spacing } from "css-box-model";
 import type {
   Placeholder as PlaceholderType,
   InOutAnimationMode,
   ContextId,
-} from '../../types';
-import { transitions } from '../../animation';
-import { noSpacing } from '../../state/spacing';
+} from "../../types";
+import { transitions } from "../../animation";
+import { noSpacing } from "../../state/spacing";
 
 function noop() {}
 
 export type PlaceholderStyle = {|
   display: string,
-  boxSizing: 'border-box',
+  boxSizing: "border-box",
   width: number,
   height: number,
   marginTop: number,
   marginRight: number,
   marginBottom: number,
   marginLeft: number,
-  flexShrink: '0',
-  flexGrow: '0',
-  pointerEvents: 'none',
+  flexShrink: "0",
+  flexGrow: "0",
+  pointerEvents: "none",
   transition: ?string,
 |};
 export type Props = {|
@@ -63,7 +63,7 @@ const getSize = ({
     return empty;
   }
 
-  if (animate === 'close') {
+  if (animate === "close") {
     return empty;
   }
 
@@ -89,7 +89,7 @@ const getStyle = ({
 
     // creating borderBox
     // background: 'green',
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
     width: size.width,
     height: size.height,
     // creating marginBox
@@ -103,14 +103,14 @@ const getStyle = ({
     // We have already taken a snapshot the current dimensions we do not want this element
     // to recalculate its dimensions
     // It is okay for these properties to be applied on elements that are not flex children
-    flexShrink: '0',
-    flexGrow: '0',
+    flexShrink: "0",
+    flexGrow: "0",
     // Just a little performance optimisation: avoiding the browser needing
     // to worry about pointer events for this element
-    pointerEvents: 'none',
+    pointerEvents: "none",
 
     // Animate the placeholder size and margin
-    transition: animate !== 'none' ? transitions.placeholder : null,
+    transition: animate !== "none" ? transitions.placeholder : null,
   };
 };
 
@@ -127,7 +127,7 @@ function Placeholder(props: Props): Node {
 
   const { animate, onTransitionEnd, onClose, contextId } = props;
   const [isAnimatingOpenOnMount, setIsAnimatingOpenOnMount] = useState<boolean>(
-    props.animate === 'open',
+    props.animate === "open",
   );
 
   // Will run after a render is flushed
@@ -140,7 +140,7 @@ function Placeholder(props: Props): Node {
     }
 
     // might need to clear the timer
-    if (animate !== 'open') {
+    if (animate !== "open") {
       tryClearAnimateOpenTimer();
       setIsAnimatingOpenOnMount(false);
       return noop;
@@ -166,13 +166,13 @@ function Placeholder(props: Props): Node {
       // each of those transitions will independently call this callback
       // Because they all have the same duration we can just respond to one of them
       // 'height' was chosen for no particular reason :D
-      if (event.propertyName !== 'height') {
+      if (event.propertyName !== "height") {
         return;
       }
 
       onTransitionEnd();
 
-      if (animate === 'close') {
+      if (animate === "close") {
         onClose();
       }
     },
@@ -187,7 +187,7 @@ function Placeholder(props: Props): Node {
 
   return React.createElement(props.placeholder.tagName, {
     style,
-    'data-rbd-placeholder-context-id': contextId,
+    "data-rbd-placeholder-context-id": contextId,
     onTransitionEnd: onSizeChangeEnd,
     ref: props.innerRef,
   });

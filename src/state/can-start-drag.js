@@ -1,14 +1,14 @@
 // @flow
-import type { State, DraggableId } from '../types';
+import type { State, DraggableId } from "../types";
 
 export default (state: State, id: DraggableId): boolean => {
   // Ready to go!
-  if (state.phase === 'IDLE') {
+  if (state.phase === "IDLE") {
     return true;
   }
 
   // Can lift depending on the type of drop animation
-  if (state.phase !== 'DROP_ANIMATING') {
+  if (state.phase !== "DROP_ANIMATING") {
     return false;
   }
 
@@ -25,5 +25,5 @@ export default (state: State, id: DraggableId): boolean => {
 
   // if dropping - allow lifting
   // if cancelling - disallow lifting
-  return state.completed.result.reason === 'DROP';
+  return state.completed.result.reason === "DROP";
 };

@@ -1,9 +1,9 @@
 // @flow
-import type { DraggableId, ContextId } from '../../types';
-import { dragHandle as dragHandleAttr } from '../data-attributes';
-import { warning } from '../../dev-warning';
-import { find, toArray } from '../../native-with-fallback';
-import isHtmlElement from '../is-type-of-element/is-html-element';
+import type { DraggableId, ContextId } from "../../types";
+import { dragHandle as dragHandleAttr } from "../data-attributes";
+import { warning } from "../../dev-warning";
+import { find, toArray } from "../../native-with-fallback";
+import isHtmlElement from "../is-type-of-element/is-html-element";
 
 export default function findDragHandle(
   contextId: ContextId,
@@ -30,7 +30,7 @@ export default function findDragHandle(
   }
 
   if (!isHtmlElement(handle)) {
-    warning('drag handle needs to be a HTMLElement');
+    warning("drag handle needs to be a HTMLElement");
     return null;
   }
 

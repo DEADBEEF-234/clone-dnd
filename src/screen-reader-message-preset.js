@@ -6,7 +6,7 @@ import type {
   DropResult,
   DraggableLocation,
   Combine,
-} from './types';
+} from "./types";
 
 export type MessagePreset = {|
   liftInstruction: string,
@@ -82,7 +82,7 @@ const onDragUpdate = (update: DragUpdate): string => {
     return withCombine(update.draggableId, update.source, combine);
   }
 
-  return 'You are over an area that cannot be dropped on';
+  return "You are over an area that cannot be dropped on";
 };
 
 const returnedToStart = (source: DraggableLocation): string => `
@@ -91,7 +91,7 @@ const returnedToStart = (source: DraggableLocation): string => `
 `;
 
 const onDragEnd = (result: DropResult): string => {
-  if (result.reason === 'CANCEL') {
+  if (result.reason === "CANCEL") {
     return `
       Movement cancelled.
       ${returnedToStart(result.source)}

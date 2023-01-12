@@ -1,6 +1,6 @@
 // @flow
-import { invariant } from '../../../invariant';
-import { findIndex } from '../../../native-with-fallback';
+import { invariant } from "../../../invariant";
+import { findIndex } from "../../../native-with-fallback";
 
 type Entry = {|
   timerId: TimeoutID,
@@ -20,7 +20,7 @@ export default () => {
       entries,
       (item: Entry): boolean => item.timerId === timerId,
     );
-    invariant(index !== -1, 'Could not find timer');
+    invariant(index !== -1, "Could not find timer");
     // delete in place
     const [entry] = entries.splice(index, 1);
     entry.callback();

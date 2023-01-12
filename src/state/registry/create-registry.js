@@ -1,6 +1,6 @@
 // @flow
-import { invariant } from '../../invariant';
-import type { TypeId, DraggableId, DroppableId } from '../../types';
+import { invariant } from "../../invariant";
+import type { TypeId, DraggableId, DroppableId } from "../../types";
 import type {
   Registry,
   DraggableAPI,
@@ -12,8 +12,8 @@ import type {
   Unsubscribe,
   DraggableEntryMap,
   DroppableEntryMap,
-} from './registry-types';
-import { values } from '../../native-with-fallback';
+} from "./registry-types";
+import { values } from "../../native-with-fallback";
 
 type EntryMap = {
   draggables: DraggableEntryMap,
@@ -45,7 +45,7 @@ export default function createRegistry(): Registry {
 
   function notify(event: RegistryEvent) {
     if (subscribers.length) {
-      subscribers.forEach(cb => cb(event));
+      subscribers.forEach((cb) => cb(event));
     }
   }
 
@@ -62,7 +62,7 @@ export default function createRegistry(): Registry {
   const draggableAPI: DraggableAPI = {
     register: (entry: DraggableEntry) => {
       entries.draggables[entry.descriptor.id] = entry;
-      notify({ type: 'ADDITION', value: entry });
+      notify({ type: "ADDITION", value: entry });
     },
     update: (entry: DraggableEntry, last: DraggableEntry) => {
       const current: ?DraggableEntry = entries.draggables[last.descriptor.id];
@@ -96,7 +96,7 @@ export default function createRegistry(): Registry {
       }
 
       delete entries.draggables[draggableId];
-      notify({ type: 'REMOVAL', value: entry });
+      notify({ type: "REMOVAL", value: entry });
     },
     getById: getDraggableById,
     findById: findDraggableById,
