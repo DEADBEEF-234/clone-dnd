@@ -1,6 +1,6 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { subtract } from './position';
+import { type Position } from "css-box-model";
+import { subtract } from "./position";
 
 type Args = {|
   scrollHeight: number,

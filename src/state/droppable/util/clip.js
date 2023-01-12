@@ -1,5 +1,5 @@
 // @flow
-import { getRect, type Rect, type Spacing } from 'css-box-model';
+import { getRect, type Rect, type Spacing } from "css-box-model";
 
 export default (frame: Spacing, subject: Spacing): ?Rect => {
   const result: Rect = getRect({

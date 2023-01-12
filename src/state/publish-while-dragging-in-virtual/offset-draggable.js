@@ -4,8 +4,8 @@ import {
   offset as offsetBox,
   type Position,
   type BoxModel,
-} from 'css-box-model';
-import type { DraggableDimension } from '../../types';
+} from "css-box-model";
+import type { DraggableDimension } from "../../types";
 
 type Args = {|
   draggable: DraggableDimension,

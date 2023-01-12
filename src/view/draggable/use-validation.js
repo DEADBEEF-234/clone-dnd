@@ -1,12 +1,12 @@
 // @flow
-import { useRef } from 'react';
-import { invariant } from '../../invariant';
-import type { DraggableId, ContextId } from '../../types';
-import type { Props } from './draggable-types';
-import checkIsValidInnerRef from '../check-is-valid-inner-ref';
-import findDragHandle from '../get-elements/find-drag-handle';
-import useDevSetupWarning from '../use-dev-setup-warning';
-import useDev from '../use-dev';
+import { useRef } from "react";
+import { invariant } from "../../invariant";
+import type { DraggableId, ContextId } from "../../types";
+import type { Props } from "./draggable-types";
+import checkIsValidInnerRef from "../check-is-valid-inner-ref";
+import findDragHandle from "../get-elements/find-drag-handle";
+import useDevSetupWarning from "../use-dev-setup-warning";
+import useDev from "../use-dev";
 
 export function useValidation(
   props: Props,
@@ -22,9 +22,9 @@ export function useValidation(
     // wrapping entire block for better minification
     const id: ?DraggableId = props.draggableId;
     // Number.isInteger will be provided by @babel/runtime-corejs2
-    invariant(id, 'Draggable requires a draggableId');
+    invariant(id, "Draggable requires a draggableId");
     invariant(
-      typeof id === 'string',
+      typeof id === "string",
       `Draggable requires a [string] draggableId.
       Provided: [type: ${typeof id}] (value: ${id})`,
     );
@@ -34,7 +34,7 @@ export function useValidation(
       `${prefix(id)} requires an integer index prop`,
     );
 
-    if (props.mapped.type === 'DRAGGING') {
+    if (props.mapped.type === "DRAGGING") {
       return;
     }
 
@@ -63,7 +63,7 @@ export function useClonePropValidation(isClone: boolean) {
     useDevSetupWarning(() => {
       invariant(
         isClone === initialRef.current,
-        'Draggable isClone prop value changed during component life',
+        "Draggable isClone prop value changed during component life",
       );
     }, [isClone]);
   });

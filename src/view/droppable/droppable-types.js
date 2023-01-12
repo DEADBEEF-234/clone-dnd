@@ -1,5 +1,5 @@
 // @flow
-import { type Node } from 'react';
+import { type Node } from "react";
 import type {
   DraggableId,
   DroppableId,
@@ -10,17 +10,17 @@ import type {
   ContextId,
   DraggableRubric,
   DroppableMode,
-} from '../../types';
-import type { ChildrenFn } from '../draggable/draggable-types';
-import { updateViewportMaxScroll } from '../../state/action-creators';
+} from "../../types";
+import type { ChildrenFn } from "../draggable/draggable-types";
+import { updateViewportMaxScroll } from "../../state/action-creators";
 
 export type DraggableChildrenFn = ChildrenFn;
 
 export type DroppableProps = {|
   // used for shared global styles
-  'data-rbd-droppable-context-id': ContextId,
+  "data-rbd-droppable-context-id": ContextId,
   // Used to lookup. Currently not used for drag and drop lifecycle
-  'data-rbd-droppable-id': DroppableId,
+  "data-rbd-droppable-id": DroppableId,
 |};
 
 export type Provided = {|

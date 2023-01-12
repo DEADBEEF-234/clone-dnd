@@ -5,9 +5,9 @@ import type {
   Dispatch as ReduxDispatch,
   Middleware as ReduxMiddleware,
   MiddlewareAPI as ReduxMiddlewareAPI,
-} from 'redux';
-import type { Action as ActionCreators } from './action-creators';
-import type { State } from '../types';
+} from "redux";
+import type { Action as ActionCreators } from "./action-creators";
+import type { State } from "../types";
 
 export type Action = ActionCreators;
 export type Dispatch = ReduxDispatch<Action>;

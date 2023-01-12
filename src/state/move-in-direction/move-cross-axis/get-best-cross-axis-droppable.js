@@ -1,17 +1,17 @@
 // @flow
-import { type Position, type Rect } from 'css-box-model';
-import { invariant } from '../../../invariant';
-import { closest } from '../../position';
-import isWithin from '../../is-within';
-import { getCorners } from '../../spacing';
-import isPartiallyVisibleThroughFrame from '../../visibility/is-partially-visible-through-frame';
-import { toDroppableList } from '../../dimension-structures';
+import { type Position, type Rect } from "css-box-model";
+import { invariant } from "../../../invariant";
+import { closest } from "../../position";
+import isWithin from "../../is-within";
+import { getCorners } from "../../spacing";
+import isPartiallyVisibleThroughFrame from "../../visibility/is-partially-visible-through-frame";
+import { toDroppableList } from "../../dimension-structures";
 import type {
   Axis,
   DroppableDimension,
   DroppableDimensionMap,
   Viewport,
-} from '../../../types';
+} from "../../../types";
 
 type GetBestDroppableArgs = {|
   isMovingForward: boolean,
@@ -27,7 +27,7 @@ type GetBestDroppableArgs = {|
 const getKnownActive = (droppable: DroppableDimension): Rect => {
   const rect: ?Rect = droppable.subject.active;
 
-  invariant(rect, 'Cannot get clipped area from droppable');
+  invariant(rect, "Cannot get clipped area from droppable");
 
   return rect;
 };

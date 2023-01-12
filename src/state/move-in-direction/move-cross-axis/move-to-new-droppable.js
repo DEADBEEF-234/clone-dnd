@@ -1,5 +1,5 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   DragImpact,
   DraggableDimension,
@@ -8,14 +8,14 @@ import type {
   Viewport,
   DisplacedBy,
   LiftEffect,
-} from '../../../types';
-import getDisplacedBy from '../../get-displaced-by';
-import { emptyGroups, noDisplacedBy } from '../../no-impact';
-import getPageBorderBoxCenter from '../../get-center-from-impact/get-page-border-box-center';
-import isTotallyVisibleInNewLocation from '../move-to-next-place/is-totally-visible-in-new-location';
-import { addPlaceholder } from '../../droppable/with-placeholder';
-import isHomeOf from '../../droppable/is-home-of';
-import calculateReorderImpact from '../../calculate-drag-impact/calculate-reorder-impact';
+} from "../../../types";
+import getDisplacedBy from "../../get-displaced-by";
+import { emptyGroups, noDisplacedBy } from "../../no-impact";
+import getPageBorderBoxCenter from "../../get-center-from-impact/get-page-border-box-center";
+import isTotallyVisibleInNewLocation from "../move-to-next-place/is-totally-visible-in-new-location";
+import { addPlaceholder } from "../../droppable/with-placeholder";
+import isHomeOf from "../../droppable/is-home-of";
+import calculateReorderImpact from "../../calculate-drag-impact/calculate-reorder-impact";
 
 type Args = {|
   previousPageBorderBoxCenter: Position,
@@ -49,7 +49,7 @@ export default ({
       displaced: emptyGroups,
       displacedBy: noDisplacedBy,
       at: {
-        type: 'REORDER',
+        type: "REORDER",
         destination: {
           droppableId: destination.descriptor.id,
           index: 0,

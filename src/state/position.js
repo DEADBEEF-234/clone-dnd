@@ -1,5 +1,5 @@
 // @flow
-import { type Position } from 'css-box-model';
+import { type Position } from "css-box-model";
 
 export const origin: Position = { x: 0, y: 0 };
 
@@ -27,14 +27,14 @@ export const negate = (point: Position): Position => ({
 // patch('x', 5)    = { x: 5, y: 0 }
 // patch('y', 5, 1) = { x: 1, y: 5 }
 export const patch = (
-  line: 'x' | 'y',
+  line: "x" | "y",
   value: number,
   otherValue?: number = 0,
 ): Position => ({
   // set the value of 'x', or 'y'
   [line]: value,
   // set the value of the other line
-  [line === 'x' ? 'y' : 'x']: otherValue,
+  [line === "x" ? "y" : "x"]: otherValue,
 });
 
 // Returns the distance between two points
@@ -50,9 +50,9 @@ export const closest = (target: Position, points: Position[]): number =>
 
 // used to apply any function to both values of a point
 // eg: const floor = apply(Math.floor)(point);
-export const apply = (fn: (value: number) => number) => (
-  point: Position,
-): Position => ({
-  x: fn(point.x),
-  y: fn(point.y),
-});
+export const apply =
+  (fn: (value: number) => number) =>
+  (point: Position): Position => ({
+    x: fn(point.x),
+    y: fn(point.y),
+  });

@@ -1,5 +1,5 @@
 // @flow
-import { type Position, type Rect } from 'css-box-model';
+import { type Position, type Rect } from "css-box-model";
 import type {
   DroppableId,
   DraggableDimension,
@@ -9,14 +9,14 @@ import type {
   DragImpact,
   Viewport,
   LiftEffect,
-} from '../../types';
-import getDroppableOver from '../get-droppable-over';
-import getDraggablesInsideDroppable from '../get-draggables-inside-droppable';
-import withDroppableScroll from '../with-scroll-change/with-droppable-scroll';
-import getReorderImpact from './get-reorder-impact';
-import getCombineImpact from './get-combine-impact';
-import noImpact from '../no-impact';
-import { offsetRectByPosition } from '../rect';
+} from "../../types";
+import getDroppableOver from "../get-droppable-over";
+import getDraggablesInsideDroppable from "../get-draggables-inside-droppable";
+import withDroppableScroll from "../with-scroll-change/with-droppable-scroll";
+import getReorderImpact from "./get-reorder-impact";
+import getCombineImpact from "./get-combine-impact";
+import noImpact from "../no-impact";
+import { offsetRectByPosition } from "../rect";
 
 type Args = {|
   pageOffset: Position,

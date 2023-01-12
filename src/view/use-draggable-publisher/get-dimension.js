@@ -4,13 +4,13 @@ import {
   type Position,
   calculateBox,
   withScroll,
-} from 'css-box-model';
+} from "css-box-model";
 import type {
   DraggableDescriptor,
   DraggableDimension,
   Placeholder,
-} from '../../types';
-import { origin } from '../../state/position';
+} from "../../types";
+import { origin } from "../../state/position";
 
 export default function getDimension(
   descriptor: DraggableDescriptor,

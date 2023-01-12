@@ -1,10 +1,10 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   UpdateDroppableScrollArgs,
   UpdateDroppableIsEnabledArgs,
   UpdateDroppableIsCombineEnabledArgs,
-} from '../action-creators';
+} from "../action-creators";
 import type {
   DroppableId,
   Critical,
@@ -12,7 +12,7 @@ import type {
   LiftRequest,
   Published,
   Viewport,
-} from '../../types';
+} from "../../types";
 
 export type StartPublishingResult = {|
   critical: Critical,

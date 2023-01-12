@@ -1,14 +1,14 @@
 // @flow
-import { type Position } from 'css-box-model';
+import { type Position } from "css-box-model";
 // eslint-disable-next-line
-import { Component } from 'react';
-import memoizeOne from 'memoize-one';
-import { connect } from 'react-redux';
-import Draggable from './draggable';
-import { origin, negate } from '../../state/position';
-import isStrictEqual from '../is-strict-equal';
-import * as animation from '../../animation';
-import { dropAnimationFinished as dropAnimationFinishedAction } from '../../state/action-creators';
+import { Component } from "react";
+import memoizeOne from "memoize-one";
+import { connect } from "react-redux";
+import Draggable from "./draggable";
+import { origin, negate } from "../../state/position";
+import isStrictEqual from "../is-strict-equal";
+import * as animation from "../../animation";
+import { dropAnimationFinished as dropAnimationFinishedAction } from "../../state/action-creators";
 import type {
   State,
   DraggableId,
@@ -21,7 +21,7 @@ import type {
   DropResult,
   LiftEffect,
   Combine,
-} from '../../types';
+} from "../../types";
 import type {
   MapProps,
   OwnProps,
@@ -29,18 +29,18 @@ import type {
   Selector,
   StateSnapshot,
   DropAnimation,
-} from './draggable-types';
-import whatIsDraggedOver from '../../state/droppable/what-is-dragged-over';
-import StoreContext from '../context/store-context';
-import whatIsDraggedOverFromResult from '../../state/droppable/what-is-dragged-over-from-result';
-import { tryGetCombine } from '../../state/get-impact-location';
+} from "./draggable-types";
+import whatIsDraggedOver from "../../state/droppable/what-is-dragged-over";
+import StoreContext from "../context/store-context";
+import whatIsDraggedOverFromResult from "../../state/droppable/what-is-dragged-over-from-result";
+import { tryGetCombine } from "../../state/get-impact-location";
 
 const getCombineWithFromResult = (result: DropResult): ?DraggableId => {
   return result.combine ? result.combine.draggableId : null;
 };
 
 const getCombineWithFromImpact = (impact: DragImpact): ?DraggableId => {
-  return impact.at && impact.at.type === 'COMBINE'
+  return impact.at && impact.at.type === "COMBINE"
     ? impact.at.combine.draggableId
     : null;
 };
@@ -72,35 +72,37 @@ function getDraggableSelector(): TrySelect {
     }),
   );
 
-  const getMemoizedProps = memoizeOne((
-    offset: Position,
-    mode: MovementMode,
-    dimension: DraggableDimension,
-    isClone: boolean,
-    // the id of the droppable you are over
-    draggingOver: ?DroppableId,
-    // the id of a draggable you are grouping with
-    combineWith: ?DraggableId,
-    forceShouldAnimate: ?boolean,
-  ): MapProps => ({
-    mapped: {
-      type: 'DRAGGING',
-      dropping: null,
-      draggingOver,
-      combineWith,
-      mode,
-      offset,
-      dimension,
-      forceShouldAnimate,
-      snapshot: getMemoizedSnapshot(
-        mode,
-        isClone,
+  const getMemoizedProps = memoizeOne(
+    (
+      offset: Position,
+      mode: MovementMode,
+      dimension: DraggableDimension,
+      isClone: boolean,
+      // the id of the droppable you are over
+      draggingOver: ?DroppableId,
+      // the id of a draggable you are grouping with
+      combineWith: ?DraggableId,
+      forceShouldAnimate: ?boolean,
+    ): MapProps => ({
+      mapped: {
+        type: "DRAGGING",
+        dropping: null,
         draggingOver,
         combineWith,
-        null,
-      ),
-    },
-  }));
+        mode,
+        offset,
+        dimension,
+        forceShouldAnimate,
+        snapshot: getMemoizedSnapshot(
+          mode,
+          isClone,
+          draggingOver,
+          combineWith,
+          null,
+        ),
+      },
+    }),
+  );
 
   const selector: TrySelect = (state: State, ownProps: OwnProps): ?MapProps => {
     // Dragging
@@ -130,7 +132,7 @@ function getDraggableSelector(): TrySelect {
     }
 
     // Dropping
-    if (state.phase === 'DROP_ANIMATING') {
+    if (state.phase === "DROP_ANIMATING") {
       const completed: CompletedDrag = state.completed;
       if (completed.result.draggableId !== ownProps.draggableId) {
         return null;
@@ -157,7 +159,7 @@ function getDraggableSelector(): TrySelect {
 
       return {
         mapped: {
-          type: 'DRAGGING',
+          type: "DRAGGING",
           offset: state.newHomeClientOffset,
           dimension,
           dropping,
@@ -197,7 +199,7 @@ function getSecondarySnapshot(combineTargetFor: ?DraggableId): StateSnapshot {
 
 const atRest: MapProps = {
   mapped: {
-    type: 'SECONDARY',
+    type: "SECONDARY",
     offset: origin,
     combineTargetFor: null,
     shouldAnimateDisplacement: true,
@@ -220,7 +222,7 @@ function getSecondarySelector(): TrySelect {
       shouldAnimateDisplacement: boolean,
     ): MapProps => ({
       mapped: {
-        type: 'SECONDARY',
+        type: "SECONDARY",
         offset,
         combineTargetFor,
         shouldAnimateDisplacement,
@@ -307,7 +309,7 @@ function getSecondarySelector(): TrySelect {
     }
 
     // Dropping
-    if (state.phase === 'DROP_ANIMATING') {
+    if (state.phase === "DROP_ANIMATING") {
       const completed: CompletedDrag = state.completed;
       // do nothing if this was the dragging item
       if (completed.result.draggableId === ownProps.draggableId) {

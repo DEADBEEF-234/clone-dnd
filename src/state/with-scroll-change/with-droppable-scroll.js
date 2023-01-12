@@ -1,7 +1,7 @@
 // @flow
-import { type Rect } from 'css-box-model';
-import type { Scrollable, DroppableDimension } from '../../types';
-import { offsetRectByPosition } from '../rect';
+import { type Rect } from "css-box-model";
+import type { Scrollable, DroppableDimension } from "../../types";
+import { offsetRectByPosition } from "../rect";
 
 export default (droppable: DroppableDimension, area: Rect): Rect => {
   const frame: ?Scrollable = droppable.frame;

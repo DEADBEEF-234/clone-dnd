@@ -2,8 +2,8 @@
 import {
   addPlaceholder,
   removePlaceholder,
-} from './droppable/with-placeholder';
-import whatIsDraggedOver from './droppable/what-is-dragged-over';
+} from "./droppable/with-placeholder";
+import whatIsDraggedOver from "./droppable/what-is-dragged-over";
 import type {
   DroppableDimension,
   DraggableDimensionMap,
@@ -11,9 +11,9 @@ import type {
   DraggableDimension,
   DragImpact,
   DroppableId,
-} from '../types';
-import patchDroppableMap from './patch-droppable-map';
-import isHomeOf from './droppable/is-home-of';
+} from "../types";
+import patchDroppableMap from "./patch-droppable-map";
+import isHomeOf from "./droppable/is-home-of";
 
 type ClearArgs = {|
   previousImpact: DragImpact,

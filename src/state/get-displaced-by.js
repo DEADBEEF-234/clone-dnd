@@ -1,8 +1,8 @@
 // @flow
-import memoizeOne from 'memoize-one';
-import { type Position } from 'css-box-model';
-import type { Axis, DisplacedBy } from '../types';
-import { patch } from './position';
+import memoizeOne from "memoize-one";
+import { type Position } from "css-box-model";
+import type { Axis, DisplacedBy } from "../types";
+import { patch } from "./position";
 
 // TODO: memoization needed?
 export default memoizeOne(function getDisplacedBy(

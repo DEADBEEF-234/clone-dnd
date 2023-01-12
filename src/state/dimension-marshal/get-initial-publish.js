@@ -1,13 +1,13 @@
 // @flow
-import type { Position } from 'css-box-model';
-import * as timings from '../../debug/timings';
-import type { StartPublishingResult } from './dimension-marshal-types';
+import type { Position } from "css-box-model";
+import * as timings from "../../debug/timings";
+import type { StartPublishingResult } from "./dimension-marshal-types";
 import type {
   Registry,
   DraggableEntry,
   DroppableEntry,
-} from '../registry/registry-types';
-import { toDraggableMap, toDroppableMap } from '../dimension-structures';
+} from "../registry/registry-types";
+import { toDraggableMap, toDroppableMap } from "../dimension-structures";
 import type {
   DroppableDescriptor,
   DroppableDimension,
@@ -16,8 +16,8 @@ import type {
   ScrollOptions,
   Critical,
   Viewport,
-} from '../../types';
-import getViewport from '../../view/window/get-viewport';
+} from "../../types";
+import getViewport from "../../view/window/get-viewport";
 
 type Args = {|
   critical: Critical,
@@ -30,7 +30,7 @@ export default ({
   scrollOptions,
   registry,
 }: Args): StartPublishingResult => {
-  const timingKey: string = 'Initial collection from DOM';
+  const timingKey: string = "Initial collection from DOM";
   timings.start(timingKey);
   const viewport: Viewport = getViewport();
   const windowScroll: Position = viewport.scroll.current;

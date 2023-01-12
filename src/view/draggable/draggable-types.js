@@ -1,6 +1,6 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { type Node } from 'react';
+import { type Position } from "css-box-model";
+import { type Node } from "react";
 import type {
   DraggableId,
   DroppableId,
@@ -10,14 +10,14 @@ import type {
   ContextId,
   ElementId,
   DraggableRubric,
-} from '../../types';
-import { dropAnimationFinished } from '../../state/action-creators';
+} from "../../types";
+import { dropAnimationFinished } from "../../state/action-creators";
 
 export type DraggingStyle = {|
-  position: 'fixed',
+  position: "fixed",
   top: number,
   left: number,
-  boxSizing: 'border-box',
+  boxSizing: "border-box",
   width: number,
   height: number,
   transition: string,
@@ -32,14 +32,14 @@ export type DraggingStyle = {|
   // During a drop it prevents a draggable from being dragged.
   // canStartDrag() will prevent drags in some cases for non primary draggable.
   // It is also a minor performance optimisation
-  pointerEvents: 'none',
+  pointerEvents: "none",
 |};
 
 export type NotDraggingStyle = {|
   transform: ?string,
   // null: use the global animation style
   // none: skip animation (used in certain displacement situations)
-  transition: null | 'none',
+  transition: null | "none",
 |};
 
 export type DraggableStyle = DraggingStyle | NotDraggingStyle;
@@ -54,19 +54,19 @@ export type DraggableProps = {|
   // inline style
   style: ?DraggableStyle,
   // used for shared global styles
-  'data-rbd-draggable-context-id': ContextId,
+  "data-rbd-draggable-context-id": ContextId,
   // used for lookups
-  'data-rbd-draggable-id': DraggableId,
+  "data-rbd-draggable-id": DraggableId,
   // used to know when a transition ends
   onTransitionEnd: ?(event: TransitionEvent) => void,
 |};
 
 export type DragHandleProps = {|
   // what draggable the handle belongs to
-  'data-rbd-drag-handle-draggable-id': DraggableId,
+  "data-rbd-drag-handle-draggable-id": DraggableId,
 
   // What DragDropContext the drag handle is in
-  'data-rbd-drag-handle-context-id': ContextId,
+  "data-rbd-drag-handle-context-id": ContextId,
 
   // Accessibility property: role (type of the element)
   // interactive element required for adding custom names / descriptions to be read out
@@ -83,7 +83,7 @@ export type DragHandleProps = {|
 
   // Accessibility property: description (using instructions)
   // id of element containing screen reader usage instructions
-  'aria-describedby': ElementId,
+  "aria-describedby": ElementId,
 
   // Allow tabbing to this element
   tabIndex: number,
@@ -126,7 +126,7 @@ export type DispatchProps = {|
 |};
 
 export type DraggingMapProps = {|
-  type: 'DRAGGING',
+  type: "DRAGGING",
   offset: Position,
   mode: MovementMode,
   dropping: ?DropAnimation,
@@ -138,7 +138,7 @@ export type DraggingMapProps = {|
 |};
 
 export type SecondaryMapProps = {|
-  type: 'SECONDARY',
+  type: "SECONDARY",
   offset: Position,
   combineTargetFor: ?DraggableId,
   shouldAnimateDisplacement: boolean,

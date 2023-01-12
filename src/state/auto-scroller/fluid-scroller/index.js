@@ -1,10 +1,10 @@
 // @flow
-import rafSchd from 'raf-schd';
-import { type Position } from 'css-box-model';
-import type { DraggingState, DroppableId } from '../../../types';
-import scroll from './scroll';
-import { invariant } from '../../../invariant';
-import * as timings from '../../../debug/timings';
+import rafSchd from "raf-schd";
+import { type Position } from "css-box-model";
+import type { DraggingState, DroppableId } from "../../../types";
+import scroll from "./scroll";
+import { invariant } from "../../../invariant";
+import * as timings from "../../../debug/timings";
 
 export type PublicArgs = {|
   scrollWindow: (change: Position) => void,
@@ -31,7 +31,7 @@ export default ({
   let dragging: ?WhileDragging = null;
 
   const tryScroll = (state: DraggingState): void => {
-    invariant(dragging, 'Cannot fluid scroll if not dragging');
+    invariant(dragging, "Cannot fluid scroll if not dragging");
     const { shouldUseTimeDampening, dragStartTime } = dragging;
 
     scroll({
@@ -44,8 +44,8 @@ export default ({
   };
 
   const start = (state: DraggingState) => {
-    timings.start('starting fluid scroller');
-    invariant(!dragging, 'Cannot start auto scrolling when already started');
+    timings.start("starting fluid scroller");
+    invariant(!dragging, "Cannot start auto scrolling when already started");
     const dragStartTime: number = Date.now();
 
     let wasScrollNeeded: boolean = false;
@@ -64,7 +64,7 @@ export default ({
       dragStartTime,
       shouldUseTimeDampening: wasScrollNeeded,
     };
-    timings.finish('starting fluid scroller');
+    timings.finish("starting fluid scroller");
 
     // we know an auto scroll is needed - let's do it!
     if (wasScrollNeeded) {

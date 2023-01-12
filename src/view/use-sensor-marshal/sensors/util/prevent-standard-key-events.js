@@ -1,5 +1,5 @@
 // @flow
-import * as keyCodes from '../../../key-codes';
+import * as keyCodes from "../../../key-codes";
 
 type KeyMap = {
   [key: number]: true,

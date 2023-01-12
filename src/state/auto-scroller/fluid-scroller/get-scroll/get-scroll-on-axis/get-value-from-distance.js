@@ -1,8 +1,8 @@
 // @flow
-import { type DistanceThresholds } from './get-distance-thresholds';
-import getPercentage from '../../get-percentage';
-import config from '../../config';
-import minScroll from './min-scroll';
+import { type DistanceThresholds } from "./get-distance-thresholds";
+import getPercentage from "../../get-percentage";
+import config from "../../config";
+import minScroll from "./min-scroll";
 
 export default (
   distanceToEdge: number,

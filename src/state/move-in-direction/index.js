@@ -1,6 +1,6 @@
 // @flow
-import type { Position } from 'css-box-model';
-import type { PublicResult } from './move-in-direction-types';
+import type { Position } from "css-box-model";
+import type { PublicResult } from "./move-in-direction-types";
 import type {
   DroppableId,
   DraggingState,
@@ -9,14 +9,14 @@ import type {
   DraggableDimension,
   DroppableDimensionMap,
   DragImpact,
-} from '../../types';
-import moveToNextPlace from './move-to-next-place';
-import moveCrossAxis from './move-cross-axis';
-import whatIsDraggedOver from '../droppable/what-is-dragged-over';
+} from "../../types";
+import moveToNextPlace from "./move-to-next-place";
+import moveCrossAxis from "./move-cross-axis";
+import whatIsDraggedOver from "../droppable/what-is-dragged-over";
 
 type Args = {|
   state: DraggingState,
-  type: 'MOVE_UP' | 'MOVE_RIGHT' | 'MOVE_DOWN' | 'MOVE_LEFT',
+  type: "MOVE_UP" | "MOVE_RIGHT" | "MOVE_DOWN" | "MOVE_LEFT",
 |};
 
 const getDroppableOver = (
@@ -40,10 +40,10 @@ export default ({ state, type }: Args): ?PublicResult => {
 
   const direction: Direction = isOver.axis.direction;
   const isMovingOnMainAxis: boolean =
-    (direction === 'vertical' &&
-      (type === 'MOVE_UP' || type === 'MOVE_DOWN')) ||
-    (direction === 'horizontal' &&
-      (type === 'MOVE_LEFT' || type === 'MOVE_RIGHT'));
+    (direction === "vertical" &&
+      (type === "MOVE_UP" || type === "MOVE_DOWN")) ||
+    (direction === "horizontal" &&
+      (type === "MOVE_LEFT" || type === "MOVE_RIGHT"));
 
   // This movement is not permitted right now
   if (isMovingOnMainAxis && !isMainAxisMovementAllowed) {
@@ -51,7 +51,7 @@ export default ({ state, type }: Args): ?PublicResult => {
   }
 
   const isMovingForward: boolean =
-    type === 'MOVE_DOWN' || type === 'MOVE_RIGHT';
+    type === "MOVE_DOWN" || type === "MOVE_RIGHT";
 
   const draggable: DraggableDimension =
     state.dimensions.draggables[state.critical.draggable.id];

@@ -1,6 +1,6 @@
 // @flow
-import type { Position } from 'css-box-model';
-import { invariant } from '../../../invariant';
+import type { Position } from "css-box-model";
+import { invariant } from "../../../invariant";
 import type {
   DroppableDimension,
   DraggableDimension,
@@ -9,11 +9,11 @@ import type {
   DimensionMap,
   DragImpact,
   Viewport,
-} from '../../../types';
-import whatIsDraggedOver from '../../droppable/what-is-dragged-over';
-import recomputeDisplacementVisibility from '../../update-displacement-visibility/recompute';
-import getClientBorderBoxCenter from '../../get-center-from-impact/get-client-border-box-center';
-import update from './update';
+} from "../../../types";
+import whatIsDraggedOver from "../../droppable/what-is-dragged-over";
+import recomputeDisplacementVisibility from "../../update-displacement-visibility/recompute";
+import getClientBorderBoxCenter from "../../get-center-from-impact/get-client-border-box-center";
+import update from "./update";
 
 type Args = {|
   state: StateWhenUpdatesAllowed,
@@ -27,7 +27,7 @@ export default ({
   viewport: forcedViewport,
 }: // when a draggable is changing enabled state, sometimes it needs to force refresh an impact
 Args): StateWhenUpdatesAllowed => {
-  invariant(state.movementMode === 'SNAP');
+  invariant(state.movementMode === "SNAP");
 
   const needsVisibilityCheck: DragImpact = state.impact;
   const viewport: Viewport = forcedViewport || state.viewport;
@@ -36,7 +36,7 @@ Args): StateWhenUpdatesAllowed => {
 
   const draggable: DraggableDimension = draggables[state.critical.draggable.id];
   const isOver: ?DroppableId = whatIsDraggedOver(needsVisibilityCheck);
-  invariant(isOver, 'Must be over a destination in SNAP movement mode');
+  invariant(isOver, "Must be over a destination in SNAP movement mode");
   const destination: DroppableDimension = droppables[isOver];
 
   const impact: DragImpact = recomputeDisplacementVisibility({

@@ -1,5 +1,5 @@
 // @flow
-import { invariant } from '../../../../invariant';
+import { invariant } from "../../../../invariant";
 import type {
   DraggableDimension,
   DroppableDimension,
@@ -8,10 +8,10 @@ import type {
   LiftEffect,
   Viewport,
   ImpactLocation,
-} from '../../../../types';
-import calculateReorderImpact from '../../../calculate-drag-impact/calculate-reorder-impact';
-import fromCombine from './from-combine';
-import fromReorder from './from-reorder';
+} from "../../../../types";
+import calculateReorderImpact from "../../../calculate-drag-impact/calculate-reorder-impact";
+import fromCombine from "./from-combine";
+import fromReorder from "./from-reorder";
 
 export type Args = {|
   isMovingForward: boolean,
@@ -37,9 +37,9 @@ export default ({
   afterCritical,
 }: Args): ?DragImpact => {
   const wasAt: ?ImpactLocation = previousImpact.at;
-  invariant(wasAt, 'Cannot move in direction without previous impact location');
+  invariant(wasAt, "Cannot move in direction without previous impact location");
 
-  if (wasAt.type === 'REORDER') {
+  if (wasAt.type === "REORDER") {
     const newIndex: ?number = fromReorder({
       isMovingForward,
       isInHomeList,

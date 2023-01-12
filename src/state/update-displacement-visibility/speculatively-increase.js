@@ -1,5 +1,5 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   DraggableId,
   DroppableDimension,
@@ -11,11 +11,11 @@ import type {
   DraggableIdMap,
   DisplacementMap,
   Viewport,
-} from '../../types';
-import scrollViewport from '../scroll-viewport';
-import scrollDroppable from '../droppable/scroll-droppable';
-import { add } from '../position';
-import getDisplacementGroups from '../get-displacement-groups';
+} from "../../types";
+import scrollViewport from "../scroll-viewport";
+import scrollDroppable from "../droppable/scroll-droppable";
+import { add } from "../position";
+import getDisplacementGroups from "../get-displacement-groups";
 
 type SpeculativeArgs = {|
   impact: DragImpact,

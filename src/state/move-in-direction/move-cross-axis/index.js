@@ -1,6 +1,6 @@
 // @flow
-import { type Position } from 'css-box-model';
-import type { PublicResult } from '../move-in-direction-types';
+import { type Position } from "css-box-model";
+import type { PublicResult } from "../move-in-direction-types";
 import type {
   DroppableDimension,
   DraggableDimension,
@@ -9,14 +9,14 @@ import type {
   DragImpact,
   Viewport,
   LiftEffect,
-} from '../../../types';
-import getBestCrossAxisDroppable from './get-best-cross-axis-droppable';
-import getClosestDraggable from './get-closest-draggable';
+} from "../../../types";
+import getBestCrossAxisDroppable from "./get-best-cross-axis-droppable";
+import getClosestDraggable from "./get-closest-draggable";
 // import moveToNewDroppable from './move-to-new-droppable';
-import getDraggablesInsideDroppable from '../../get-draggables-inside-droppable';
-import getClientFromPageBorderBoxCenter from '../../get-center-from-impact/get-client-border-box-center/get-client-from-page-border-box-center';
-import getPageBorderBoxCenter from '../../get-center-from-impact/get-page-border-box-center';
-import moveToNewDroppable from './move-to-new-droppable';
+import getDraggablesInsideDroppable from "../../get-draggables-inside-droppable";
+import getClientFromPageBorderBoxCenter from "../../get-center-from-impact/get-client-border-box-center/get-client-from-page-border-box-center";
+import getPageBorderBoxCenter from "../../get-center-from-impact/get-page-border-box-center";
+import moveToNewDroppable from "./move-to-new-droppable";
 
 type Args = {|
   isMovingForward: boolean,

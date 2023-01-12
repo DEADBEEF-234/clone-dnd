@@ -1,9 +1,9 @@
 // @flow
-import rafSchd from 'raf-schd';
-import { useState } from 'react';
-import { useCallback, useMemo } from 'use-memo-one';
-import type { Position } from 'css-box-model';
-import { invariant } from '../../invariant';
+import rafSchd from "raf-schd";
+import { useState } from "react";
+import { useCallback, useMemo } from "use-memo-one";
+import type { Position } from "css-box-model";
+import { invariant } from "../../invariant";
 import type {
   ContextId,
   State,
@@ -17,10 +17,10 @@ import type {
   TryGetLock,
   TryGetLockOptions,
   DraggableOptions,
-} from '../../types';
-import create, { type Lock, type LockAPI } from './lock';
-import type { Store, Action } from '../../state/store-types';
-import canStartDrag from '../../state/can-start-drag';
+} from "../../types";
+import create, { type Lock, type LockAPI } from "./lock";
+import type { Store, Action } from "../../state/store-types";
+import canStartDrag from "../../state/can-start-drag";
 import {
   move as moveAction,
   moveUp as moveUpAction,
@@ -31,29 +31,29 @@ import {
   lift as liftAction,
   type LiftArgs as LiftActionArgs,
   flush,
-} from '../../state/action-creators';
+} from "../../state/action-creators";
 import type {
   Registry,
   DraggableEntry,
-} from '../../state/registry/registry-types';
-import useMouseSensor from './sensors/use-mouse-sensor';
-import useKeyboardSensor from './sensors/use-keyboard-sensor';
-import useTouchSensor from './sensors/use-touch-sensor';
-import useValidateSensorHooks from './use-validate-sensor-hooks';
-import isEventInInteractiveElement from './is-event-in-interactive-element';
-import getBorderBoxCenterPosition from '../get-border-box-center-position';
-import { warning } from '../../dev-warning';
-import useLayoutEffect from '../use-isomorphic-layout-effect';
-import { noop } from '../../empty';
-import findClosestDraggableIdFromEvent from './find-closest-draggable-id-from-event';
-import findDraggable from '../get-elements/find-draggable';
-import bindEvents from '../event-bindings/bind-events';
+} from "../../state/registry/registry-types";
+import useMouseSensor from "./sensors/use-mouse-sensor";
+import useKeyboardSensor from "./sensors/use-keyboard-sensor";
+import useTouchSensor from "./sensors/use-touch-sensor";
+import useValidateSensorHooks from "./use-validate-sensor-hooks";
+import isEventInInteractiveElement from "./is-event-in-interactive-element";
+import getBorderBoxCenterPosition from "../get-border-box-center-position";
+import { warning } from "../../dev-warning";
+import useLayoutEffect from "../use-isomorphic-layout-effect";
+import { noop } from "../../empty";
+import findClosestDraggableIdFromEvent from "./find-closest-draggable-id-from-event";
+import findDraggable from "../get-elements/find-draggable";
+import bindEvents from "../event-bindings/bind-events";
 
 function preventDefault(event: Event) {
   event.preventDefault();
 }
 
-type LockPhase = 'PRE_DRAG' | 'DRAGGING' | 'COMPLETED';
+type LockPhase = "PRE_DRAG" | "DRAGGING" | "COMPLETED";
 
 type IsActiveArgs = {|
   expected: LockPhase,
@@ -190,7 +190,7 @@ function tryStart({
 
   // claiming lock
   const lock: Lock = lockAPI.claim(forceSensorStop || noop);
-  let phase: LockPhase = 'PRE_DRAG';
+  let phase: LockPhase = "PRE_DRAG";
 
   function getShouldRespectForcePress(): boolean {
     // not looking up the entry as it might have been removed in a virtual list
@@ -207,7 +207,7 @@ function tryStart({
     }
   }
 
-  const tryDispatchWhenDragging = tryDispatch.bind(null, 'DRAGGING');
+  const tryDispatchWhenDragging = tryDispatch.bind(null, "DRAGGING");
 
   type LiftArgs = {|
     liftActionArgs: LiftActionArgs,
@@ -218,21 +218,21 @@ function tryStart({
   function lift(args: LiftArgs) {
     function completed() {
       lockAPI.release();
-      phase = 'COMPLETED';
+      phase = "COMPLETED";
     }
     // Double lift = bad
-    if (phase !== 'PRE_DRAG') {
+    if (phase !== "PRE_DRAG") {
       completed();
-      invariant(phase === 'PRE_DRAG', `Cannot lift in phase ${phase}`);
+      invariant(phase === "PRE_DRAG", `Cannot lift in phase ${phase}`);
     }
 
     store.dispatch(liftAction(args.liftActionArgs));
 
     // We are now in the DRAGGING phase
-    phase = 'DRAGGING';
+    phase = "DRAGGING";
 
     function finish(
-      reason: 'CANCEL' | 'DROP',
+      reason: "CANCEL" | "DROP",
       options?: StopDragOptions = { shouldBlockNextClick: false },
     ) {
       args.cleanup();
@@ -241,7 +241,7 @@ function tryStart({
       if (options.shouldBlockNextClick) {
         const unbind = bindEvents(window, [
           {
-            eventName: 'click',
+            eventName: "click",
             fn: preventDefault,
             options: {
               // only blocking a single click
@@ -265,15 +265,15 @@ function tryStart({
     return {
       isActive: () =>
         isActive({
-          expected: 'DRAGGING',
+          expected: "DRAGGING",
           phase,
           isLockActive,
           // Do not want to want warnings for boolean checks
           shouldWarn: false,
         }),
       shouldRespectForcePress: getShouldRespectForcePress,
-      drop: (options?: StopDragOptions) => finish('DROP', options),
-      cancel: (options?: StopDragOptions) => finish('CANCEL', options),
+      drop: (options?: StopDragOptions) => finish("DROP", options),
+      cancel: (options?: StopDragOptions) => finish("CANCEL", options),
       ...args.actions,
     };
   }
@@ -287,7 +287,7 @@ function tryStart({
       liftActionArgs: {
         id: draggableId,
         clientSelection,
-        movementMode: 'FLUID',
+        movementMode: "FLUID",
       },
       cleanup: () => move.cancel(),
       actions: { move },
@@ -311,7 +311,7 @@ function tryStart({
       liftActionArgs: {
         id: draggableId,
         clientSelection: getBorderBoxCenterPosition(el),
-        movementMode: 'SNAP',
+        movementMode: "SNAP",
       },
       cleanup: noop,
       actions,
@@ -320,7 +320,7 @@ function tryStart({
 
   function abortPreDrag() {
     const shouldRelease: boolean = isActive({
-      expected: 'PRE_DRAG',
+      expected: "PRE_DRAG",
       phase,
       isLockActive,
       shouldWarn: true,
@@ -334,7 +334,7 @@ function tryStart({
   const preDrag: PreDragActions = {
     isActive: () =>
       isActive({
-        expected: 'PRE_DRAG',
+        expected: "PRE_DRAG",
         phase,
         isLockActive,
         // Do not want to want warnings for boolean checks
@@ -459,7 +459,7 @@ export default function useSensorMarshal({
 
       lockAPI.tryAbandon();
 
-      if (store.getState().phase !== 'IDLE') {
+      if (store.getState().phase !== "IDLE") {
         store.dispatch(flush());
       }
     },

@@ -1,21 +1,21 @@
 // @flow
-import { useRef } from 'react';
-import { useMemo, useCallback } from 'use-memo-one';
-import type { DraggableRubric, DraggableDescriptor } from '../../types';
-import getStyle from './get-style';
+import { useRef } from "react";
+import { useMemo, useCallback } from "use-memo-one";
+import type { DraggableRubric, DraggableDescriptor } from "../../types";
+import getStyle from "./get-style";
 import useDraggablePublisher, {
   type Args as PublisherArgs,
-} from '../use-draggable-publisher/use-draggable-publisher';
-import AppContext from '../context/app-context';
-import DroppableContext from '../context/droppable-context';
+} from "../use-draggable-publisher/use-draggable-publisher";
+import AppContext from "../context/app-context";
+import DroppableContext from "../context/droppable-context";
 import type {
   Props,
   Provided,
   DraggableStyle,
   DragHandleProps,
-} from './draggable-types';
-import { useValidation, useClonePropValidation } from './use-validation';
-import useRequiredContext from '../use-required-context';
+} from "./draggable-types";
+import { useValidation, useClonePropValidation } from "./use-validation";
+import useRequiredContext from "../use-required-context";
 
 function preventHtml5Dnd(event: DragEvent) {
   event.preventDefault();
@@ -30,9 +30,8 @@ export default function Draggable(props: Props) {
   const getRef = useCallback((): ?HTMLElement => ref.current, []);
 
   // context
-  const { contextId, dragHandleInstructionId, registry } = useRequiredContext(
-    AppContext,
-  );
+  const { contextId, dragHandleInstructionId, registry } =
+    useRequiredContext(AppContext);
   const { type, droppableId } = useRequiredContext(DroppableContext);
 
   const descriptor: DraggableDescriptor = useMemo(
@@ -101,18 +100,18 @@ export default function Draggable(props: Props) {
       isEnabled
         ? {
             tabIndex: 0,
-            'data-rbd-drag-handle-draggable-id': draggableId,
-            'data-rbd-drag-handle-context-id': contextId,
+            "data-rbd-drag-handle-draggable-id": draggableId,
+            "data-rbd-drag-handle-context-id": contextId,
             // need to force the item to be interative
             // consumers are welcome to remove or change this
-            role: 'button',
+            role: "button",
 
             // Sadly not giving a nicer role description
             // Lighthouse currently complains about this as a a11y violation
             // 'aria-roledescription': 'Draggable item',
 
             // Adding the lift instruction as a description
-            'aria-describedby': dragHandleInstructionId,
+            "aria-describedby": dragHandleInstructionId,
 
             // Opting out of html5 drag and drops
             draggable: false,
@@ -124,7 +123,7 @@ export default function Draggable(props: Props) {
 
   const onMoveEnd = useCallback(
     (event: TransitionEvent) => {
-      if (mapped.type !== 'DRAGGING') {
+      if (mapped.type !== "DRAGGING") {
         return;
       }
 
@@ -134,7 +133,7 @@ export default function Draggable(props: Props) {
 
       // There might be other properties on the element that are
       // being transitioned. We do not want those to end a drop animation!
-      if (event.propertyName !== 'transform') {
+      if (event.propertyName !== "transform") {
         return;
       }
 
@@ -146,13 +145,13 @@ export default function Draggable(props: Props) {
   const provided: Provided = useMemo(() => {
     const style: DraggableStyle = getStyle(mapped);
     const onTransitionEnd =
-      mapped.type === 'DRAGGING' && mapped.dropping ? onMoveEnd : null;
+      mapped.type === "DRAGGING" && mapped.dropping ? onMoveEnd : null;
 
     const result: Provided = {
       innerRef: setRef,
       draggableProps: {
-        'data-rbd-draggable-context-id': contextId,
-        'data-rbd-draggable-id': draggableId,
+        "data-rbd-draggable-context-id": contextId,
+        "data-rbd-draggable-id": draggableId,
         style,
         onTransitionEnd,
       },

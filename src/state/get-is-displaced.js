@@ -1,5 +1,5 @@
 // @flow
-import type { DisplacementGroups, DraggableId } from '../types';
+import type { DisplacementGroups, DraggableId } from "../types";
 
 type Args = {|
   displaced: DisplacementGroups,

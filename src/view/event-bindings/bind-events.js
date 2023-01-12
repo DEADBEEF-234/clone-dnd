@@ -1,5 +1,5 @@
 // @flow
-import type { EventBinding, EventOptions } from './event-types';
+import type { EventBinding, EventOptions } from "./event-types";
 
 type UnbindFn = () => void;
 

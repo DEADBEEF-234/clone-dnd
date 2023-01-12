@@ -1,9 +1,9 @@
 // @flow
-import { invariant } from '../../invariant';
-import type { Props } from './droppable-types';
-import { warning } from '../../dev-warning';
-import checkIsValidInnerRef from '../check-is-valid-inner-ref';
-import useDevSetupWarning from '../use-dev-setup-warning';
+import { invariant } from "../../invariant";
+import type { Props } from "./droppable-types";
+import { warning } from "../../dev-warning";
+import checkIsValidInnerRef from "../check-is-valid-inner-ref";
+import useDevSetupWarning from "../use-dev-setup-warning";
 
 type Args = {|
   props: Props,
@@ -14,7 +14,7 @@ type Args = {|
 type CheckFn = (args: Args) => void;
 
 function isBoolean(value: mixed): boolean {
-  return typeof value === 'boolean';
+  return typeof value === "boolean";
 }
 
 function runChecks(args: Args, checks: CheckFn[]) {
@@ -23,24 +23,24 @@ function runChecks(args: Args, checks: CheckFn[]) {
 
 const shared: CheckFn[] = [
   function required({ props }: Args) {
-    invariant(props.droppableId, 'A Droppable requires a droppableId prop');
+    invariant(props.droppableId, "A Droppable requires a droppableId prop");
     invariant(
-      typeof props.droppableId === 'string',
+      typeof props.droppableId === "string",
       `A Droppable requires a [string] droppableId. Provided: [${typeof props.droppableId}]`,
     );
   },
   function boolean({ props }: Args) {
     invariant(
       isBoolean(props.isDropDisabled),
-      'isDropDisabled must be a boolean',
+      "isDropDisabled must be a boolean",
     );
     invariant(
       isBoolean(props.isCombineEnabled),
-      'isCombineEnabled must be a boolean',
+      "isCombineEnabled must be a boolean",
     );
     invariant(
       isBoolean(props.ignoreContainerClipping),
-      'ignoreContainerClipping must be a boolean',
+      "ignoreContainerClipping must be a boolean",
     );
   },
   function ref({ getDroppableRef }: Args) {
@@ -74,13 +74,13 @@ const virtual: CheckFn[] = [
   function hasClone({ props }: Args) {
     invariant(
       props.renderClone,
-      'Must provide a clone render function (renderClone) for virtual lists',
+      "Must provide a clone render function (renderClone) for virtual lists",
     );
   },
   function hasNoPlaceholder({ getPlaceholderRef }: Args) {
     invariant(
       !getPlaceholderRef(),
-      'Expected virtual list to not have a placeholder',
+      "Expected virtual list to not have a placeholder",
     );
   },
 ];
@@ -90,11 +90,11 @@ export default function useValidation(args: Args) {
     // wrapping entire block for better minification
     runChecks(args, shared);
 
-    if (args.props.mode === 'standard') {
+    if (args.props.mode === "standard") {
       runChecks(args, standard);
     }
 
-    if (args.props.mode === 'virtual') {
+    if (args.props.mode === "virtual") {
       runChecks(args, virtual);
     }
   });

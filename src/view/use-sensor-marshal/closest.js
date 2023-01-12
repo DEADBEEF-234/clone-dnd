@@ -1,19 +1,19 @@
 // @flow
-import { find } from '../../native-with-fallback';
+import { find } from "../../native-with-fallback";
 
 const supportedMatchesName: string = ((): string => {
-  const base: string = 'matches';
+  const base: string = "matches";
 
   // Server side rendering
-  if (typeof document === 'undefined') {
+  if (typeof document === "undefined") {
     return base;
   }
 
   // See https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
   const candidates: string[] = [
     base,
-    'msMatchesSelector',
-    'webkitMatchesSelector',
+    "msMatchesSelector",
+    "webkitMatchesSelector",
   ];
 
   const value: ?string = find(

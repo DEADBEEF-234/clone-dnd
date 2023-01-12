@@ -1,16 +1,16 @@
 // @flow
-import { type Position } from 'css-box-model';
-import { invariant } from '../../../invariant';
+import { type Position } from "css-box-model";
+import { invariant } from "../../../invariant";
 import type {
   DraggableDimensionMap,
   DraggableId,
   Combine,
   LiftEffect,
   DragImpact,
-} from '../../../types';
-import { add } from '../../position';
-import getCombinedItemDisplacement from '../../get-combined-item-displacement';
-import { tryGetCombine } from '../../get-impact-location';
+} from "../../../types";
+import { add } from "../../position";
+import getCombinedItemDisplacement from "../../get-combined-item-displacement";
+import { tryGetCombine } from "../../get-impact-location";
 
 type Args = {|
   impact: DragImpact,

@@ -1,10 +1,10 @@
 // @flow
-import React, { type Node } from 'react';
-import { useMemo } from 'use-memo-one';
-import type { Responders, ContextId, Sensor } from '../../types';
-import ErrorBoundary from './error-boundary';
-import preset from '../../screen-reader-message-preset';
-import App from './app';
+import React, { type Node } from "react";
+import { useMemo } from "use-memo-one";
+import type { Responders, ContextId, Sensor } from "../../types";
+import ErrorBoundary from "./error-boundary";
+import preset from "../../screen-reader-message-preset";
+import App from "./app";
 
 type Props = {|
   ...Responders,
@@ -36,7 +36,7 @@ export default function DragDropContext(props: Props) {
   // so that it can catch any errors caused by App
   return (
     <ErrorBoundary>
-      {setCallbacks => (
+      {(setCallbacks) => (
         <App
           nonce={props.nonce}
           contextId={contextId}

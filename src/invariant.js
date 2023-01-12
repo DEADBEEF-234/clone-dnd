@@ -1,7 +1,7 @@
 // @flow
 /* eslint-disable no-restricted-syntax */
-const isProduction: boolean = process.env.NODE_ENV === 'production';
-const prefix: string = 'Invariant failed';
+const isProduction: boolean = process.env.NODE_ENV === "production";
+const prefix: string = "Invariant failed";
 
 // Want to use this:
 // export class RbdInvariant extends Error { }
@@ -28,6 +28,6 @@ export function invariant(condition: mixed, message?: string) {
   } else {
     // When not in production we allow the message to pass through
     // *This block will be removed in production builds*
-    throw new RbdInvariant(`${prefix}: ${message || ''}`);
+    throw new RbdInvariant(`${prefix}: ${message || ""}`);
   }
 }

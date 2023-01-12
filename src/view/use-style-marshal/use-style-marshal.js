@@ -1,26 +1,26 @@
 // @flow
-import { useRef } from 'react';
-import memoizeOne from 'memoize-one';
-import { useMemo, useCallback } from 'use-memo-one';
-import { invariant } from '../../invariant';
-import type { StyleMarshal } from './style-marshal-types';
-import type { ContextId, DropReason } from '../../types';
-import getStyles, { type Styles } from './get-styles';
-import { prefix } from '../data-attributes';
-import useLayoutEffect from '../use-isomorphic-layout-effect';
+import { useRef } from "react";
+import memoizeOne from "memoize-one";
+import { useMemo, useCallback } from "use-memo-one";
+import { invariant } from "../../invariant";
+import type { StyleMarshal } from "./style-marshal-types";
+import type { ContextId, DropReason } from "../../types";
+import getStyles, { type Styles } from "./get-styles";
+import { prefix } from "../data-attributes";
+import useLayoutEffect from "../use-isomorphic-layout-effect";
 
 const getHead = (): HTMLHeadElement => {
-  const head: ?HTMLHeadElement = document.querySelector('head');
-  invariant(head, 'Cannot find the head to append a style to');
+  const head: ?HTMLHeadElement = document.querySelector("head");
+  invariant(head, "Cannot find the head to append a style to");
   return head;
 };
 
 const createStyleEl = (nonce?: string): HTMLStyleElement => {
-  const el: HTMLStyleElement = document.createElement('style');
+  const el: HTMLStyleElement = document.createElement("style");
   if (nonce) {
-    el.setAttribute('nonce', nonce);
+    el.setAttribute("nonce", nonce);
   }
-  el.type = 'text/css';
+  el.type = "text/css";
   return el;
 };
 
@@ -33,7 +33,7 @@ export default function useStyleMarshal(contextId: ContextId, nonce?: string) {
     // Using memoizeOne to prevent frequent updates to textContext
     memoizeOne((proposed: string) => {
       const el: ?HTMLStyleElement = dynamicRef.current;
-      invariant(el, 'Cannot set dynamic style element if it is not set');
+      invariant(el, "Cannot set dynamic style element if it is not set");
       el.textContent = proposed;
     }),
     [],
@@ -41,7 +41,7 @@ export default function useStyleMarshal(contextId: ContextId, nonce?: string) {
 
   const setAlwaysStyle = useCallback((proposed: string) => {
     const el: ?HTMLStyleElement = alwaysRef.current;
-    invariant(el, 'Cannot set dynamic style element if it is not set');
+    invariant(el, "Cannot set dynamic style element if it is not set");
     el.textContent = proposed;
   }, []);
 
@@ -49,7 +49,7 @@ export default function useStyleMarshal(contextId: ContextId, nonce?: string) {
   useLayoutEffect(() => {
     invariant(
       !alwaysRef.current && !dynamicRef.current,
-      'style elements already mounted',
+      "style elements already mounted",
     );
 
     const always: HTMLStyleElement = createStyleEl(nonce);
@@ -72,9 +72,9 @@ export default function useStyleMarshal(contextId: ContextId, nonce?: string) {
     setDynamicStyle(styles.resting);
 
     return () => {
-      const remove = ref => {
+      const remove = (ref) => {
         const current: ?HTMLStyleElement = ref.current;
-        invariant(current, 'Cannot unmount ref as it is not set');
+        invariant(current, "Cannot unmount ref as it is not set");
         getHead().removeChild(current);
         ref.current = null;
       };
@@ -91,13 +91,13 @@ export default function useStyleMarshal(contextId: ContextId, nonce?: string) {
     contextId,
   ]);
 
-  const dragging = useCallback(() => setDynamicStyle(styles.dragging), [
-    setDynamicStyle,
-    styles.dragging,
-  ]);
+  const dragging = useCallback(
+    () => setDynamicStyle(styles.dragging),
+    [setDynamicStyle, styles.dragging],
+  );
   const dropping = useCallback(
     (reason: DropReason) => {
-      if (reason === 'DROP') {
+      if (reason === "DROP") {
         setDynamicStyle(styles.dropAnimating);
         return;
       }

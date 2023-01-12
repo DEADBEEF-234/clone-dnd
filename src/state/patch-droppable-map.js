@@ -1,5 +1,5 @@
 // @flow
-import type { DroppableDimension, DroppableDimensionMap } from '../types';
+import type { DroppableDimension, DroppableDimensionMap } from "../types";
 
 export default (
   droppables: DroppableDimensionMap,

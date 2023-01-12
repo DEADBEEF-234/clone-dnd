@@ -1,11 +1,11 @@
 // @flow
-import { invariant } from '../../../invariant';
-import messagePreset from '../../../screen-reader-message-preset';
-import * as timings from '../../../debug/timings';
+import { invariant } from "../../../invariant";
+import messagePreset from "../../../screen-reader-message-preset";
+import * as timings from "../../../debug/timings";
 import getExpiringAnnounce, {
   type ExpiringAnnounce,
-} from './expiring-announce';
-import getAsyncMarshal, { type AsyncMarshal } from './async-marshal';
+} from "./expiring-announce";
+import getAsyncMarshal, { type AsyncMarshal } from "./async-marshal";
 import type {
   DropResult,
   Responders,
@@ -25,9 +25,9 @@ import type {
   OnDragStartResponder,
   OnDragUpdateResponder,
   OnDragEndResponder,
-} from '../../../types';
-import { isCombineEqual, isCriticalEqual, areLocationsEqual } from './is-equal';
-import { tryGetDestination, tryGetCombine } from '../../get-impact-location';
+} from "../../../types";
+import { isCombineEqual, isCriticalEqual, areLocationsEqual } from "./is-equal";
+import { tryGetDestination, tryGetCombine } from "../../get-impact-location";
 
 const withTimings = (key: string, fn: Function) => {
   timings.start(key);
@@ -89,9 +89,9 @@ export default (getResponders: () => Responders, announce: Announce) => {
   const beforeCapture = (draggableId: DraggableId, mode: MovementMode) => {
     invariant(
       !dragging,
-      'Cannot fire onBeforeCapture as a drag start has already been published',
+      "Cannot fire onBeforeCapture as a drag start has already been published",
     );
-    withTimings('onBeforeCapture', () => {
+    withTimings("onBeforeCapture", () => {
       // No use of screen reader for this responder
       const fn: ?OnBeforeCaptureResponder = getResponders().onBeforeCapture;
       if (fn) {
@@ -107,9 +107,9 @@ export default (getResponders: () => Responders, announce: Announce) => {
   const beforeStart = (critical: Critical, mode: MovementMode) => {
     invariant(
       !dragging,
-      'Cannot fire onBeforeDragStart as a drag start has already been published',
+      "Cannot fire onBeforeDragStart as a drag start has already been published",
     );
-    withTimings('onBeforeDragStart', () => {
+    withTimings("onBeforeDragStart", () => {
       // No use of screen reader for this responder
       const fn: ?OnBeforeDragStartResponder = getResponders().onBeforeDragStart;
       if (fn) {
@@ -121,7 +121,7 @@ export default (getResponders: () => Responders, announce: Announce) => {
   const start = (critical: Critical, mode: MovementMode) => {
     invariant(
       !dragging,
-      'Cannot fire onBeforeDragStart as a drag start has already been published',
+      "Cannot fire onBeforeDragStart as a drag start has already been published",
     );
     const data: DragStart = getDragStart(critical, mode);
     dragging = {
@@ -133,7 +133,7 @@ export default (getResponders: () => Responders, announce: Announce) => {
 
     // we will flush this frame if we receive any responder updates
     asyncMarshal.add(() => {
-      withTimings('onDragStart', () =>
+      withTimings("onDragStart", () =>
         execute(
           getResponders().onDragStart,
           data,
@@ -151,7 +151,7 @@ export default (getResponders: () => Responders, announce: Announce) => {
 
     invariant(
       dragging,
-      'Cannot fire onDragMove when onDragStart has not been called',
+      "Cannot fire onDragMove when onDragStart has not been called",
     );
 
     // Has the critical changed? Will result in a source change
@@ -191,7 +191,7 @@ export default (getResponders: () => Responders, announce: Announce) => {
     };
 
     asyncMarshal.add(() => {
-      withTimings('onDragUpdate', () =>
+      withTimings("onDragUpdate", () =>
         execute(
           getResponders().onDragUpdate,
           data,
@@ -203,19 +203,19 @@ export default (getResponders: () => Responders, announce: Announce) => {
   };
 
   const flush = () => {
-    invariant(dragging, 'Can only flush responders while dragging');
+    invariant(dragging, "Can only flush responders while dragging");
     asyncMarshal.flush();
   };
 
   const drop = (result: DropResult) => {
     invariant(
       dragging,
-      'Cannot fire onDragEnd when there is no matching onDragStart',
+      "Cannot fire onDragEnd when there is no matching onDragStart",
     );
     dragging = null;
     // not adding to frame marshal - we want this to be done in the same render pass
     // we also want the consumers reorder logic to be in the same render pass
-    withTimings('onDragEnd', () =>
+    withTimings("onDragEnd", () =>
       execute(
         getResponders().onDragEnd,
         result,
@@ -236,7 +236,7 @@ export default (getResponders: () => Responders, announce: Announce) => {
       ...getDragStart(dragging.lastCritical, dragging.mode),
       combine: null,
       destination: null,
-      reason: 'CANCEL',
+      reason: "CANCEL",
     };
     drop(result);
   };

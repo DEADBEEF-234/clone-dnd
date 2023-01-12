@@ -1,25 +1,25 @@
 // @flow
-import React, { useEffect, useRef, type Node } from 'react';
-import { bindActionCreators } from 'redux';
-import { Provider } from 'react-redux';
-import { useMemo, useCallback } from 'use-memo-one';
-import { invariant } from '../../invariant';
-import createStore from '../../state/create-store';
-import createDimensionMarshal from '../../state/dimension-marshal/dimension-marshal';
-import canStartDrag from '../../state/can-start-drag';
-import scrollWindow from '../window/scroll-window';
-import createAutoScroller from '../../state/auto-scroller';
-import useStyleMarshal from '../use-style-marshal/use-style-marshal';
-import useFocusMarshal from '../use-focus-marshal';
-import useRegistry from '../../state/registry/use-registry';
-import type { Registry } from '../../state/registry/registry-types';
-import type { FocusMarshal } from '../use-focus-marshal/focus-marshal-types';
-import type { AutoScroller } from '../../state/auto-scroller/auto-scroller-types';
-import type { StyleMarshal } from '../use-style-marshal/style-marshal-types';
+import React, { useEffect, useRef, type Node } from "react";
+import { bindActionCreators } from "redux";
+import { Provider } from "react-redux";
+import { useMemo, useCallback } from "use-memo-one";
+import { invariant } from "../../invariant";
+import createStore from "../../state/create-store";
+import createDimensionMarshal from "../../state/dimension-marshal/dimension-marshal";
+import canStartDrag from "../../state/can-start-drag";
+import scrollWindow from "../window/scroll-window";
+import createAutoScroller from "../../state/auto-scroller";
+import useStyleMarshal from "../use-style-marshal/use-style-marshal";
+import useFocusMarshal from "../use-focus-marshal";
+import useRegistry from "../../state/registry/use-registry";
+import type { Registry } from "../../state/registry/registry-types";
+import type { FocusMarshal } from "../use-focus-marshal/focus-marshal-types";
+import type { AutoScroller } from "../../state/auto-scroller/auto-scroller-types";
+import type { StyleMarshal } from "../use-style-marshal/style-marshal-types";
 import type {
   DimensionMarshal,
   Callbacks as DimensionMarshalCallbacks,
-} from '../../state/dimension-marshal/dimension-marshal-types';
+} from "../../state/dimension-marshal/dimension-marshal-types";
 import type {
   DraggableId,
   State,
@@ -27,10 +27,10 @@ import type {
   Announce,
   Sensor,
   ElementId,
-} from '../../types';
-import type { Store, Action } from '../../state/store-types';
-import type { SetAppCallbacks, AppCallbacks } from './drag-drop-context-types';
-import StoreContext from '../context/store-context';
+} from "../../types";
+import type { Store, Action } from "../../state/store-types";
+import type { SetAppCallbacks, AppCallbacks } from "./drag-drop-context-types";
+import StoreContext from "../context/store-context";
 import {
   move,
   publishWhileDragging,
@@ -39,15 +39,15 @@ import {
   updateDroppableIsCombineEnabled,
   collectionStarting,
   flush,
-} from '../../state/action-creators';
-import isMovementAllowed from '../../state/is-movement-allowed';
-import useAnnouncer from '../use-announcer';
-import useHiddenElement from '../use-hidden-element';
-import AppContext, { type AppContextValue } from '../context/app-context';
-import useStartupValidation from './use-startup-validation';
-import usePrevious from '../use-previous-ref';
-import { warning } from '../../dev-warning';
-import useSensorMarshal from '../use-sensor-marshal/use-sensor-marshal';
+} from "../../state/action-creators";
+import isMovementAllowed from "../../state/is-movement-allowed";
+import useAnnouncer from "../use-announcer";
+import useHiddenElement from "../use-hidden-element";
+import AppContext, { type AppContextValue } from "../context/app-context";
+import useStartupValidation from "./use-startup-validation";
+import usePrevious from "../use-previous-ref";
+import { warning } from "../../dev-warning";
+import useSensorMarshal from "../use-sensor-marshal/use-sensor-marshal";
 
 export type Props = {|
   ...Responders,
@@ -78,7 +78,7 @@ const createResponders = (props: Props): Responders => ({
 type LazyStoreRef = {| current: ?Store |};
 
 function getStore(lazyRef: LazyStoreRef): Store {
-  invariant(lazyRef.current, 'Could not find store from lazy ref');
+  invariant(lazyRef.current, "Could not find store from lazy ref");
   return lazyRef.current;
 }
 
@@ -99,13 +99,13 @@ export default function App(props: Props) {
 
   const dragHandleInstructionId: ElementId = useHiddenElement({
     contextId,
-    uniqueKey: 'drag-handle-usage',
+    uniqueKey: "drag-handle-usage",
     text: liftInstruction,
   });
 
   const styleMarshal: StyleMarshal = useStyleMarshal(contextId, nonce);
 
-  const lazyDispatch: Action => void = useCallback((action: Action): void => {
+  const lazyDispatch: (Action) => void = useCallback((action: Action): void => {
     getStore(lazyStoreRef).dispatch(action);
   }, []);
 
@@ -170,9 +170,9 @@ export default function App(props: Props) {
   );
 
   // Checking for unexpected store changes
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== "production") {
     if (lazyStoreRef.current && lazyStoreRef.current !== store) {
-      warning('unexpected store change');
+      warning("unexpected store change");
     }
   }
 
@@ -182,14 +182,14 @@ export default function App(props: Props) {
   const tryResetStore = useCallback(() => {
     const current: Store = getStore(lazyStoreRef);
     const state: State = current.getState();
-    if (state.phase !== 'IDLE') {
+    if (state.phase !== "IDLE") {
       current.dispatch(flush());
     }
   }, []);
 
   const isDragging = useCallback((): boolean => {
     const state: State = getStore(lazyStoreRef).getState();
-    return state.isDragging || state.phase === 'DROP_ANIMATING';
+    return state.isDragging || state.phase === "DROP_ANIMATING";
   }, []);
 
   const appCallbacks: AppCallbacks = useMemo(

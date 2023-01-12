@@ -1,6 +1,6 @@
 // @flow
-import memoizeOne from 'memoize-one';
-import type { DraggableDimension } from '../types';
+import memoizeOne from "memoize-one";
+import type { DraggableDimension } from "../types";
 
 export default memoizeOne(
   (

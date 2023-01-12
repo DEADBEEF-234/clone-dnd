@@ -1,5 +1,5 @@
 // @flow
-import type { Position } from 'css-box-model';
+import type { Position } from "css-box-model";
 import type {
   DraggableDimension,
   DraggingState,
@@ -11,10 +11,10 @@ import type {
   DimensionMap,
   StateWhenUpdatesAllowed,
   DroppableDimensionMap,
-} from '../../../types';
-import getDragImpact from '../../get-drag-impact';
-import { add, subtract } from '../../position';
-import recomputePlaceholders from '../../recompute-placeholders';
+} from "../../../types";
+import getDragImpact from "../../get-drag-impact";
+import { add, subtract } from "../../position";
+import recomputePlaceholders from "../../recompute-placeholders";
 
 type Args = {|
   state: StateWhenUpdatesAllowed,
@@ -66,10 +66,10 @@ export default ({
   };
 
   // Not updating impact while bulk collecting
-  if (state.phase === 'COLLECTING') {
+  if (state.phase === "COLLECTING") {
     return {
       // adding phase to appease flow (even though it will be overwritten by spread)
-      phase: 'COLLECTING',
+      phase: "COLLECTING",
       ...state,
       dimensions,
       viewport,

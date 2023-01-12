@@ -7,8 +7,8 @@ import type {
   DisplacementGroups,
   DraggableId,
   LiftEffect,
-} from '../../../../types';
-import didStartAfterCritical from '../../../did-start-after-critical';
+} from "../../../../types";
+import didStartAfterCritical from "../../../did-start-after-critical";
 
 type Args = {|
   isMovingForward: boolean,

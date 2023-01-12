@@ -1,2 +1,2 @@
 // @flow
-export { default } from './drop-middleware';
+export { default } from "./drop-middleware";

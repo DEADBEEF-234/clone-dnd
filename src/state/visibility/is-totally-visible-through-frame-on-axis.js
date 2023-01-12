@@ -1,8 +1,8 @@
 // @flow
-import { type Spacing } from 'css-box-model';
-import type { Axis } from '../../types';
-import isWithin from '../is-within';
-import { vertical } from '../axis';
+import { type Spacing } from "css-box-model";
+import type { Axis } from "../../types";
+import isWithin from "../is-within";
+import { vertical } from "../axis";
 
 export default (axis: Axis) => (frame: Spacing) => {
   const isWithinVertical = isWithin(frame.top, frame.bottom);

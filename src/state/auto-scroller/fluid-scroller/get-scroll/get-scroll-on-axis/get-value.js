@@ -1,8 +1,8 @@
 // @flow
-import { type DistanceThresholds } from './get-distance-thresholds';
-import getValueFromDistance from './get-value-from-distance';
-import dampenValueByTime from './dampen-value-by-time';
-import minScroll from './min-scroll';
+import { type DistanceThresholds } from "./get-distance-thresholds";
+import getValueFromDistance from "./get-value-from-distance";
+import dampenValueByTime from "./dampen-value-by-time";
+import minScroll from "./min-scroll";
 
 type Args = {|
   distanceToEdge: number,

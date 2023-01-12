@@ -1,2 +1,2 @@
 // @flow
-export { default } from './animate-in-out';
+export { default } from "./animate-in-out";

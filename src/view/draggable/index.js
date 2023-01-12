@@ -1,2 +1,2 @@
 // @flow
-export { PublicDraggable as default } from './draggable-api';
+export { PublicDraggable as default } from "./draggable-api";

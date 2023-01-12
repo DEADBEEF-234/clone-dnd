@@ -1,6 +1,6 @@
 // @flow
-import { invariant } from '../invariant';
-import getHomeLocation from './get-home-location';
+import { invariant } from "../invariant";
+import getHomeLocation from "./get-home-location";
 import type {
   DraggableDimension,
   DroppableDimension,
@@ -11,10 +11,10 @@ import type {
   DraggableIdMap,
   DisplacementGroups,
   LiftEffect,
-} from '../types';
-import getDraggablesInsideDroppable from './get-draggables-inside-droppable';
-import getDisplacedBy from './get-displaced-by';
-import getDisplacementGroups from './get-displacement-groups';
+} from "../types";
+import getDraggablesInsideDroppable from "./get-draggables-inside-droppable";
+import getDisplacedBy from "./get-displaced-by";
+import getDisplacementGroups from "./get-displacement-groups";
 
 type Args = {|
   draggable: DraggableDimension,
@@ -42,7 +42,7 @@ export default ({ draggable, home, draggables, viewport }: Args): Result => {
   // in a list that does not start at 0 the descriptor.index might be different from the index in the list
   // eg a list could be: [2,3,4]. A descriptor.index of '2' would actually be in index '0' of the list
   const rawIndex: number = insideHome.indexOf(draggable);
-  invariant(rawIndex !== -1, 'Expected draggable to be inside home list');
+  invariant(rawIndex !== -1, "Expected draggable to be inside home list");
 
   const afterDragging: DraggableDimension[] = insideHome.slice(rawIndex + 1);
   const effected: DraggableIdMap = afterDragging.reduce(
@@ -53,7 +53,7 @@ export default ({ draggable, home, draggables, viewport }: Args): Result => {
     {},
   );
   const afterCritical: LiftEffect = {
-    inVirtualList: home.descriptor.mode === 'virtual',
+    inVirtualList: home.descriptor.mode === "virtual",
     displacedBy,
     effected,
   };
@@ -74,7 +74,7 @@ export default ({ draggable, home, draggables, viewport }: Args): Result => {
     displaced,
     displacedBy,
     at: {
-      type: 'REORDER',
+      type: "REORDER",
       destination: getHomeLocation(draggable.descriptor),
     },
   };
